@@ -10,18 +10,16 @@ public class BulletController : MonoBehaviour {
     Vector3 _bullPos;
     Camera _cam;
     CreatureController _creature;
-    float _speed = 0.0f;
     const float _outRange = 0.05f;
 
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
         _cam = Camera.main;
-        _speed = 28.0f;
-
     }
 
     private void OnEnable() {
-        _rigidbody.velocity = DestPos * _speed;
+        float speed = 28.0f;
+        _rigidbody.velocity = DestPos * speed;
     }
 
 

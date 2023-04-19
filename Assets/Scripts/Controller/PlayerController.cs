@@ -292,7 +292,7 @@ public class PlayerController : CreatureController {
         }
         EquipedGun.transform.SetParent(_hand.transform);
         EquipedGun.name = $"{_fieldItem.name}";
-        GunInfo = EquipedGun.getGunInfo;
+        GunInfo = EquipedGun.GetGunInfo;
         _coMakeBulletWaitSeconds = new WaitForSeconds(GunInfo.shootCoolTime);
 
         _fieldItem = null;

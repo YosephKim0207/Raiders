@@ -4,25 +4,20 @@ using UnityEngine;
 using static EnumList;
 
 public class EnemyController : CreatureController {
+    [SerializeField]
+    public int pathStackUsageCount = 5;
+
     Transform _shootTargetTransform;
     FindPathState PathState = FindPathState.UseDirect;
     Coroutine _coDoSomething;
     Coroutine _coFindPath;
     WaitForSeconds WaitFindPathTime;
     
-    
-    //Grid _grid;
-    //int xCount;
-    //int yCount;
     int usePathStackCount = 0;
     Stack<Vector3> _pathStack;
     
     bool _isDead = false;
 
-    // TODO
-    // 몬스터 종류마다 클래스를 따로 두고 관리하는 것보다
-    // 하나의 Enemy 클래스로 두고 데이터 값에 따라 몬스터를 분류하는 것이
-    // 새로운 몬스터를 추가 / 관리하기 편하다
     protected override void Init() {
         base.Init();
         HP = 10;
@@ -34,9 +29,6 @@ public class EnemyController : CreatureController {
         player = GameObject.Find("Player");
         _shootTargetTransform = player.transform;
 
-        //_grid = Manager.Map.Grid;
-        //xCount = Manager.Map.xCount;
-        //yCount = Manager.Map.yCount;
         float coFIndPathTime = 0.25f;
         WaitFindPathTime = new WaitForSeconds(coFIndPathTime);
     }
@@ -49,8 +41,6 @@ public class EnemyController : CreatureController {
         else if(Manager.PlayerData.GamePlayState == GameState.GameOver || Manager.PlayerData.GamePlayState == GameState.Ending){
             State = CreatureState.Idle;
         }
-
-
 
         switch (State) {
             case CreatureState.Idle:
@@ -126,16 +116,8 @@ public class EnemyController : CreatureController {
         }
     }
 
-    void DropItem(string itemName) {
-        GameObject dropItem;
-        dropItem = Resources.Load<GameObject>($"Prefabs/Items/{itemName}");
-        if (dropItem != null) {
-            dropItem = Object.Instantiate<GameObject>(dropItem, transform.position, Quaternion.identity);
-            dropItem.name = itemName;
-        }
-    }
-
-    void ChooseDropItem(ItemType itemType, int rand, int itemRare = 0, int rate = 2) {
+    // 아이템 종류와 레어도에 따른 드랍할 아이템 선택
+    void ChooseDropItem(ItemType itemType, int rand, int itemRare = 0) {
         switch (itemType) {
             case ItemType.Item:
                 // 포션
@@ -158,7 +140,16 @@ public class EnemyController : CreatureController {
                 }
                 break;
         }
+    }
 
+    // 게임월드상에 아이템 드롭
+    void DropItem(string itemName) {
+        GameObject dropItem;
+        dropItem = Resources.Load<GameObject>($"Prefabs/Items/{itemName}");
+        if (dropItem != null) {
+            dropItem = Object.Instantiate<GameObject>(dropItem, transform.position, Quaternion.identity);
+            dropItem.name = itemName;
+        }
     }
 
     void OnEnable() {
@@ -170,7 +161,7 @@ public class EnemyController : CreatureController {
         }
     }
 
-    // TODO
+    // 플레이어를 타겟으로 길을 찾는 코루틴
     IEnumerator CoFindPath() {
         // 플레이어와 일정 거리 이내인 경우 다음 길찾기 중단
         if ((_shootTargetTransform.position - transform.position).magnitude < 2.5f) {
@@ -178,35 +169,33 @@ public class EnemyController : CreatureController {
         }
 
         // 진행방향 전방 충돌 점검
-        RaycastHit2D rayHit1, rayHit2, rayHit3;
-        //LayerMask mask = LayerMask.GetMask("Collision") | LayerMask.GetMask("Enemy");
-        rayHit1 = Physics2D.Raycast(this.transform.position, DestPos, 2.5f, LayerMask.GetMask("Collision"));
-        //rayHit2 = Physics2D.Raycast(this.transform.position + _destPos, new Vector3(_destPos.x - 0.3f, _destPos.y - 0.3f, 0.0f), 2.0f, LayerMask.GetMask("Collision"));
-        //rayHit3 = Physics2D.Raycast(this.transform.position + _destPos, new Vector3(_destPos.x + 0.3f, _destPos.y + 0.3f, 0.0f), 2.0f, LayerMask.GetMask("Collision"));
-
-
+        RaycastHit2D rayHit;
+        rayHit = Physics2D.Raycast(this.transform.position, DestPos, 2.5f, LayerMask.GetMask("Collision"));
+   
         Debug.DrawRay(this.transform.position, DestPos * 1.5f, Color.red, 1.0f);
-        //Debug.DrawRay(this.transform.position + _destPos, new Vector3(_destPos.x - 0.3f, _destPos.y - 0.3f, 0.0f) * 1.5f, Color.blue, 1.0f);
-        //Debug.DrawRay(this.transform.position + _destPos, new Vector3(_destPos.x + 0.3f, _destPos.y + 0.3f, 0.0f) * 1.5f, Color.blue, 1.0f);
 
-        // 진행방향이 Collision Layer Map Obj를 향하는 경우에만 FindPath 함수 실시
-        //if (rayHit1.transform == null && rayHit2.transform == null && rayHit3.transform == null && _pathStack == null) {
-        if (rayHit1.transform == null && _pathStack == null) {
+        // Enemy가 길찾기에 사용할 조건 설정
+        // rayHit1에 충돌한 오브젝트가 없고 && Manager의 FindPath로 탐색해둔 경로가 없으면 직선이동
+        if (rayHit.transform == null && _pathStack == null) {
 
             PathState = FindPathState.UseDirect;
 
         }
+        // Manager의 FindPath로 탐색해둔 경로가 _pathStack상에 없거나 || _pathStack가 비어있으면Manager의 FindPath를 호출하기 위해 PathStated를 ReFindPath로
         else if (_pathStack == null || _pathStack.Count == 0) {
             PathState = FindPathState.ReFindPath;
             }
-        else if (usePathStackCount > 5) {
+        // Manager의 FindPath를 통해 찾은 경로를 정해진 횟수 이상 사용한 경우 경로 재탐색 및 사용횟수 초기화
+        else if (usePathStackCount > pathStackUsageCount) {
             PathState = FindPathState.ReFindPath;
             usePathStackCount = 0;
             }
+        // Manager의 FindPath로 찾아둔 경로를 _pathStack에서 가져와 사용
          else {
             PathState = FindPathState.UsePathStack;
          }
-        
+
+        // 정해진 조건대로 분기하여 이동경로 설정
         switch (PathState) {
             case FindPathState.UseDirect:
                 DestPos = (_shootTargetTransform.position - transform.position).normalized;
@@ -226,7 +215,7 @@ public class EnemyController : CreatureController {
         _coFindPath = null;
     }
 
-
+    // _pathStack에 저장된 경로를 이용하여 경로 설정 
     void SetPathUseStack() {
         Vector3 nextPos;
         nextPos = _pathStack.Pop();
@@ -236,7 +225,7 @@ public class EnemyController : CreatureController {
         DestPos = (nextPos - transform.position).normalized;
     }
 
-
+    // Enemy의 행동을 coDoTime마다 설정
     IEnumerator CoDoSomething() {
         int rand = UnityEngine.Random.Range(0, 10);
 

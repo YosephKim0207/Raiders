@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FeverController : ItemController {
-    float _feverTime = 10.0f;
+    [SerializeField]
+    const float _feverTime = 10.0f;
+
     protected override void Init() {
         _itemName = EnumList.ItemName.Fever;
     }

@@ -34,7 +34,7 @@ public class HpPotionController : ItemController {
             Destroy(this.gameObject);
         }
 
-        // 포션 드롭 이후 자동 소멸을 위한 코드
+        // 포션 드롭 이후 자동 소멸 카운트다운
         _countDown += Time.deltaTime;
 
         if(_countDown > _disappearTime) {

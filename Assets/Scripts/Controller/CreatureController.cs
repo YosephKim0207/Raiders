@@ -261,7 +261,7 @@ public class CreatureController : MonoBehaviour {
             Debug.Log($"{name}'s Gun is Empty");
         }
         else {
-            GunInfo = _equipedGun.getGunInfo;
+            GunInfo = _equipedGun.GetGunInfo;
             _coMakeBulletWaitSeconds = new WaitForSeconds(GunInfo.shootCoolTime);
             _equipedGun.Equiped = true;
         }
@@ -274,8 +274,8 @@ public class CreatureController : MonoBehaviour {
 
         // Creature가 소지 중인 Gun에서 총알 발사
         // Gun이 Reload 중일 경우 pullTrigger하여도 총알 발사 불가
-        if (_equipedGun.Reload == false) {
-            _equipedGun.TriggerState = true;
+        if (_equipedGun.GetReload == false) {
+            _equipedGun.SetTriggerState = true;
 
             if(_equipedGun.Creature is PlayerController) {
                 _isCamShake = true;

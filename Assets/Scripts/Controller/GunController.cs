@@ -1,48 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static EnumList;
 
 public class GunController : MonoBehaviour {
-    Vector3 _gunLook;
-    Vector3 _aimTargetPos;
-    Vector3 _shootPointCorrectionPistol = new Vector3(0.0f, 0.2f, 0.0f);
-    Vector3 _shootPointCorrectionRifle = new Vector3(0.0f, 0.0f, 0.0f);
-    const float rad2Deg = 57.29298f;
-    const float rad90Deg = 1.578f;
-    GameObject shootPointGo;
-    GameObject _bullet;
-    Gun gunInfo = new Gun();
-    int _ammo;
-    int gunName;
-    float _angle;
-    GameObject _bulletType;
-    public Transform ShootPoint { get; private set; }
-    Transform _shooter;
-    Transform _hand;
-    SpriteRenderer _spriteRenderer;
-    WaitForSeconds _coShootWaitSecReload, _coShootWaitSecShootCoolTime;
     public CreatureController Creature { get; private set; }
-    PlayerController playerController;
     public bool Equiped { get; set; }
-
-    public Gun getGunInfo {
+    public Gun GetGunInfo {
         get {
-            if (gunInfo.bulletType != null) {
-                return gunInfo;
+            if (_gunInfo.bulletType != null) {
+                return _gunInfo;
             }
             else {
-                //Debug.Log($"{this.name}'s GunController {this.GetComponent<GunController>().enabled} in getGunInfo struct");
-                
-                return GetGunInfo();
+                return GetGunInfoFromPrefab();
             }
         }
     }
 
-    public int RemainBullet {
-        get { return _ammo; }
-    }
-
+    public int GetRemainBullet { get => _ammo; }
 
     public bool IsFever {
         set {
@@ -51,51 +25,58 @@ public class GunController : MonoBehaviour {
                 _coShootWaitSecShootCoolTime = new WaitForSeconds(0.05f);
             }
             else {
-                _coShootWaitSecReload = new WaitForSeconds(gunInfo.reloadTime);
-                _coShootWaitSecShootCoolTime = new WaitForSeconds(gunInfo.shootCoolTime);
+                _coShootWaitSecReload = new WaitForSeconds(_gunInfo.reloadTime);
+                _coShootWaitSecShootCoolTime = new WaitForSeconds(_gunInfo.shootCoolTime);
             }
-        } }
-
-    bool _triggerState = false;
-    public bool TriggerState { set { _triggerState = value; } }
-    bool _reload = false;
-    public bool Reload { get { return _reload; } }
-    Coroutine _coShoot;
-    Coroutine _coGunFire;
-
-
-    // TODO 
-    static public System.Action<TargetInfo> SetTargetInfoAction = null;
-
-    public struct TargetInfo {
-        Vector3 bulletShootPoint;
-        int bulletDamage;
-        Transform gunShooter;
+        }
     }
 
+    public bool SetTriggerState { set => _triggerState = value; }
+    public bool GetReload { get => _reload; }
 
+    Transform _shootPoint;
+    Vector3 _gunLook;
+    Vector3 _aimTargetPos;
+    Vector3 _shootPointCorrectionPistol = new Vector3(0.0f, 0.2f, 0.0f);
+    Vector3 _shootPointCorrectionRifle = new Vector3(0.0f, 0.0f, 0.0f);
+    const float rad2Deg = 57.29298f;
+    const float rad90Deg = 1.578f;
+    GameObject _shootPointGo;
+    GameObject _bullet;
+    Gun _gunInfo = new Gun();
+    int _ammo;
+    int _gunName;
+    GameObject _bulletType;
+    SpriteRenderer _spriteRenderer;
+    WaitForSeconds _coShootWaitSecReload;
+    WaitForSeconds _coShootWaitSecShootCoolTime;
+    PlayerController _playerController;
+    bool _triggerState = false;
+    bool _reload = false;
+    Coroutine _coShoot;
+    
     private void OnEnable() {
 
-        // 총기 소유 피아식별 
-        _shooter = transform.parent.parent;
-        _hand = transform.parent;
+        // 총기 소유 피아식별
+        Transform shooter;
+        shooter = transform.parent.parent;
 
-        Creature = _shooter.GetComponent<CreatureController>();
+        Creature = shooter.GetComponent<CreatureController>();
 
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
         if (Creature is PlayerController) {
             _aimTargetPos = Manager.Mouse.CheckMousePos();
         }
         else if (Creature is EnemyController) {
-            _aimTargetPos = playerController.transform.position;
+            _aimTargetPos = _playerController.transform.position;
         }
         else {
             Debug.Log("Shooter is UnDefined");
         }
 
-        GetGunInfo();
-        gunName = int.Parse(gunInfo.name);
+        GetGunInfoFromPrefab();
+        _gunName = int.Parse(_gunInfo.name);
     }
 
     private void Start() {
@@ -124,31 +105,31 @@ public class GunController : MonoBehaviour {
     }
 
     protected void Init() {
-        GetGunInfo();
+        GetGunInfoFromPrefab();
     }
 
-    protected Gun GetGunInfo() {
+    protected Gun GetGunInfoFromPrefab() {
         // JSON으로부터 해당 Obj의 총기 정보 가져오기
         Dictionary<string, Gun> gunDict = Manager.Data.gunDict;
         int idxValue = gameObject.name.IndexOf("_");
         string name = gameObject.name.Substring(idxValue + 1);
 
-        gunDict.TryGetValue(name, out gunInfo);
+        gunDict.TryGetValue(name, out _gunInfo);
 
-        _bulletType = (GameObject)Resources.Load($"Prefabs/Bullets/Bullet_{gunInfo.bulletType}");
+        _bulletType = (GameObject)Resources.Load($"Prefabs/Bullets/Bullet_{_gunInfo.bulletType}");
         
         // 총구 위치 정보 가져오기
-        shootPointGo = transform.Find("Point").gameObject;
-        ShootPoint = shootPointGo.transform;
-        _ammo = gunInfo.ammo;
+        _shootPointGo = transform.Find("Point").gameObject;
+        _shootPoint = _shootPointGo.transform;
+        _ammo = _gunInfo.ammo;
 
 
         
 
-        _coShootWaitSecReload = new WaitForSeconds(gunInfo.reloadTime);
-        _coShootWaitSecShootCoolTime = new WaitForSeconds(gunInfo.shootCoolTime);
+        _coShootWaitSecReload = new WaitForSeconds(_gunInfo.reloadTime);
+        _coShootWaitSecShootCoolTime = new WaitForSeconds(_gunInfo.shootCoolTime);
 
-        return gunInfo;
+        return _gunInfo;
     }
 
     protected void RotateGun() {
@@ -157,42 +138,43 @@ public class GunController : MonoBehaviour {
 
         }
         else {
-            _aimTargetPos = playerController.transform.position;
+            _aimTargetPos = _playerController.transform.position;
         }
 
+        // 총기가 향하는 방향에 따른 스프라이트 flip
         _gunLook = (_aimTargetPos - transform.position).normalized;
 
-        if (_gunLook.x < 0 && gunName < 100) {
+        if (_gunLook.x < 0 && _gunName < 100) {
             _spriteRenderer.flipY = true;
         }
-        else if(_gunLook.x >= 0 && gunName < 100) {
+        else if(_gunLook.x >= 0 && _gunName < 100) {
             _spriteRenderer.flipY = false;
         }
-        else if (_gunLook.x < 0 && gunName >= 100) {
+        else if (_gunLook.x < 0 && _gunName >= 100) {
             _spriteRenderer.flipX = true;
         }
-        else if (_gunLook.x >= 0 && gunName >= 100) {
+        else if (_gunLook.x >= 0 && _gunName >= 100) {
             _spriteRenderer.flipX = false;
         }
 
 
 
-
-        if (gunName > 100) {
-            _angle = (Mathf.Atan2(_gunLook.y, _gunLook.x) + rad90Deg) * rad2Deg;  // target에 대한 xy방향벡터를 통해 tan 각도 구하기
-            transform.rotation = Quaternion.AngleAxis(_angle, Vector3.forward);  //Z축 중심으로 angle만큼 회전
+        float angle;
+        if (_gunName > 100) {
+            angle = (Mathf.Atan2(_gunLook.y, _gunLook.x) + rad90Deg) * rad2Deg;  // target에 대한 xy방향벡터를 통해 tan 각도 구하기
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);  //Z축 중심으로 angle만큼 회전
         }
         else {
-            _angle = Mathf.Atan2(_gunLook.y, _gunLook.x) * rad2Deg;  // target에 대한 xy방향벡터를 통해 tan 각도 구하기
-            transform.rotation = Quaternion.AngleAxis(_angle, Vector3.forward);  //Z축 중심으로 angle만큼 회전
+            angle = Mathf.Atan2(_gunLook.y, _gunLook.x) * rad2Deg;  // target에 대한 xy방향벡터를 통해 tan 각도 구하기
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);  //Z축 중심으로 angle만큼 회전
         }
 
-        ShootPoint = shootPointGo.transform;
+        _shootPoint = _shootPointGo.transform;
 
     }
 
     float Atan2Degree(Vector3 dest) {
-        return Mathf.Atan2(dest.y, dest.x) * 57.2978f; // 57.29578 == Mathf.Rad2Deg
+        return Mathf.Atan2(dest.y, dest.x) * rad2Deg; // 57.29578 == Mathf.Rad2Deg
     }
 
     
@@ -200,20 +182,20 @@ public class GunController : MonoBehaviour {
     IEnumerator CoShoot() {
 
 
-        Vector3 shootDir = (_aimTargetPos - ShootPoint.position).normalized;
+        Vector3 shootDir = (_aimTargetPos - _shootPoint.position).normalized;
 
         float rot = Atan2Degree(shootDir);  
-        if (gunName < 100 && _spriteRenderer.flipY) {
+        if (_gunName < 100 && _spriteRenderer.flipY) {
             // 총알 생성지점 보정으로 인한 shootDir 보정(Cursor 위치 보정)
-            shootDir = (_aimTargetPos - _shootPointCorrectionPistol - ShootPoint.position).normalized;
+            shootDir = (_aimTargetPos - _shootPointCorrectionPistol - _shootPoint.position).normalized;
             rot = Atan2Degree(shootDir);
-            _bullet = Manager.Pool.UsePool(Creature, _bulletType, ShootPoint.position + (shootDir * 0.5f) + _shootPointCorrectionPistol, Quaternion.Euler(0.0f, 0.0f, rot), shootDir);
+            _bullet = Manager.Pool.UsePool(Creature, _bulletType, _shootPoint.position + (shootDir * 0.5f) + _shootPointCorrectionPistol, Quaternion.Euler(0.0f, 0.0f, rot), shootDir);
         }
-        else if (gunName >= 100 && _spriteRenderer.flipX) {
-            _bullet = Manager.Pool.UsePool(Creature, _bulletType, ShootPoint.position + (shootDir * 0.5f) + _shootPointCorrectionRifle, Quaternion.Euler(0.0f, 0.0f, rot), shootDir);
+        else if (_gunName >= 100 && _spriteRenderer.flipX) {
+            _bullet = Manager.Pool.UsePool(Creature, _bulletType, _shootPoint.position + (shootDir * 0.5f) + _shootPointCorrectionRifle, Quaternion.Euler(0.0f, 0.0f, rot), shootDir);
         }
         else {
-            _bullet = Manager.Pool.UsePool(Creature, _bulletType, ShootPoint.position + (shootDir * 0.5f), Quaternion.Euler(0.0f, 0.0f, rot), shootDir);
+            _bullet = Manager.Pool.UsePool(Creature, _bulletType, _shootPoint.position + (shootDir * 0.5f), Quaternion.Euler(0.0f, 0.0f, rot), shootDir);
         }
 
         // 총알 소모 카운트
@@ -232,7 +214,7 @@ public class GunController : MonoBehaviour {
             yield return _coShootWaitSecReload;
 
             _coShoot = null;
-            _ammo = gunInfo.ammo;
+            _ammo = _gunInfo.ammo;
             _reload = false;
             if (Creature is PlayerController && !((PlayerController)Creature).IsFever) {
                 Manager.Mouse.DefaultMouseShape();
