@@ -7,7 +7,6 @@ using static EnumList;
 
 public class PlayerController : CreatureController {
     Camera _cam;
-    GameObject _go;
     GameObject _hand;
     GameObject _fieldItem;
     Coroutine _coIsFever;
@@ -18,7 +17,7 @@ public class PlayerController : CreatureController {
     float camShakeY = 0.025f;
     public bool _hasGun { get; private set; }
     bool _hasFever = false;
-    bool _equipPossible = true;
+    bool _isEquipPossible = true;
     public bool HasFever {
         get { return _hasFever; }
         set {
@@ -37,6 +36,10 @@ public class PlayerController : CreatureController {
             base.HP = value;
 
             // HP UI들에게 송출
+            if(HpAction == null) {
+                return;
+            }
+
             HpAction.Invoke(value);
 
             if(HP == 0) {
@@ -66,7 +69,7 @@ public class PlayerController : CreatureController {
     }
     public float FeverTime { get; set; }
 
-    private CanEquip PlayerCanEquip {
+    private CanEquip IsPlayerCanEquip {
         get { return _canEquip; }
         set { _canEquip = value; }
     }
@@ -82,18 +85,14 @@ public class PlayerController : CreatureController {
         RemainAmmoAction = null;
         FeverAction = null;
 
-        _go = Resources.Load<GameObject>("Prefabs/Player_Gun_Hand");
-        if (_go != null) {
-            _hand = UnityEngine.Object.Instantiate(_go, transform);
+        GameObject gunGameObject;
+        gunGameObject = Resources.Load<GameObject>("Prefabs/Player_Gun_Hand");
+        if (gunGameObject != null) {
+            _hand = UnityEngine.Object.Instantiate(gunGameObject, transform);
             _hand.name = "Player_Hand";
             _hand.transform.position = new Vector3(-0.3f, -0.3f, 0.0f);
         }
 
-        // 플레이어 생성시 총기 들고 있는 경우 사용
-        // GunInit();
-        
-
-        _go = null;
         HP = 100;
 
     }
@@ -122,7 +121,6 @@ public class PlayerController : CreatureController {
         Manager.PlayerData.playerPosition = transform;
 
         _hand.transform.position = transform.position + new Vector3(-0.3f, -0.3f, 0.0f);
-        //Debug.Log(Manager.Map.Grid.CellToWorld(Vector3Int.FloorToInt(transform.position)));
         switch (State) {
             case CreatureState.Idle:
                 GetAction();
@@ -166,8 +164,8 @@ public class PlayerController : CreatureController {
             }
 
             // 아이템 습득 관련 행동 (player가 E키를 누름 && player주변에 아이템이 있는 경우) 
-            if (Input.GetKeyDown(KeyCode.E) && PlayerCanEquip.Equals(CanEquip.Yes) && _equipPossible) {
-                _equipPossible = false;
+            if (Input.GetKeyDown(KeyCode.E) && IsPlayerCanEquip.Equals(CanEquip.Yes) && _isEquipPossible) {
+                _isEquipPossible = false;
                 GetEquip();
                 //Debug.Log("Take Gun!");
             }
@@ -225,7 +223,6 @@ public class PlayerController : CreatureController {
     }
 
     protected override void UpdateAttack() { 
-        //Debug.Log($"{_target.position}");
         base.UpdateAttack();
 
     }
@@ -233,12 +230,13 @@ public class PlayerController : CreatureController {
     #region 아이템 탐지
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponent<GunController>() != null) {
-            //Debug.Log($"{collision.name} can Equip");
-            PlayerCanEquip = CanEquip.Yes;
+            Debug.Log($"{collision.name} can Equip");
+
+            IsPlayerCanEquip = CanEquip.Yes;
             _fieldItem = collision.gameObject;
         }
 
-        // item 주도적 움직으로 바꾸기 
+        // Item 주도적 움직으로 바꾸기 
         else if (collision.GetComponent<ItemController>() != null) {
             ItemController itemController = collision.GetComponent<ItemController>();
             switch (itemController.ItemName) {
@@ -252,7 +250,7 @@ public class PlayerController : CreatureController {
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.GetComponent<GunController>()) {
-            PlayerCanEquip = CanEquip.No;
+            IsPlayerCanEquip = CanEquip.No;
             _fieldItem = null;
         }
     }
@@ -277,12 +275,12 @@ public class PlayerController : CreatureController {
     void TakeGun() {
         if (EquipedGun == null) {  // 총을 소지하고 있지 않는 경우
             InitGunPos();
-            _equipPossible = true;
+            _isEquipPossible = true;
         }
         else {  // 총을 소지하고 있는 경우
             DropGun();
             InitGunPos();
-            _equipPossible = true;
+            _isEquipPossible = true;
         }
 
     }

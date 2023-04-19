@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour {
+    public CreatureController SetCreature { set => _creature = value; }
+    public Vector3 DestPos { get; set; }
+
+    Rigidbody2D _rigidbody;
     Vector3 _bullPos;
     Camera _cam;
-    public CreatureController creature;
-    public Vector3 DestPos { get; set; }
-    public Rigidbody2D _rigidbody;
+    CreatureController _creature;
     float _speed = 0.0f;
-    float _outRange = 0.05f;
+    const float _outRange = 0.05f;
 
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
         _cam = Camera.main;
-        _speed = 28f;
+        _speed = 28.0f;
 
     }
 
@@ -27,7 +29,7 @@ public class BulletController : MonoBehaviour {
         // 카메라 영역+a 벗어나는 경우 총알 제거
         _bullPos = _cam.WorldToViewportPoint(transform.position);
         if (_bullPos.x <= -_outRange || _bullPos.x >= 1.0f + _outRange || _bullPos.y <= -_outRange || _bullPos.y >= 1.0f + _outRange) {
-            creature = null;
+            _creature = null;
             Manager.Pool.PushPoolChild(this.gameObject);
         }
     }
@@ -40,30 +42,30 @@ public class BulletController : MonoBehaviour {
         }
         // Player가 쏜 총알이 Enemy와 충돌하는 경우
         else if (collision.gameObject.layer.Equals(10)) {
-            //Debug.Log("Bullet Hit Player");
-            if (creature is PlayerController) {
+            if (_creature is PlayerController) {
                 EnemyController enemy = collision.GetComponent<EnemyController>();
 
                 if (enemy != null) {
-                    enemy.HP -= creature.GunInfo.damage;
-                    creature = null;
+                    enemy.HP -= _creature.GunInfo.damage;
+                    _creature = null;
                     Manager.Pool.PushPoolChild(gameObject);
+
+                    Debug.Log("Player's Bullet Hit Enemy");
                 }
             }
         }
         // Enemy가 쏜 총알이 Player와 충돌하는 경우
         else if (collision.gameObject.layer.Equals(6)) {
-            //Debug.Log("Bullet Hit Enemy");
-            if (creature is EnemyController) {
-                //Debug.Log("OnTrigger : Enemy to Player");
-                // bullet이 player에게 damage 가함 
+            if (_creature is EnemyController) {
                 PlayerController player = collision.GetComponent<PlayerController>();
                 // player Fever인 경우 무적
                 if (player.IsFever == false) {
-                    player.HP -= creature.GunInfo.damage;
+                    player.HP -= _creature.GunInfo.damage;
+
+                    Debug.Log("Enemy's Bullet Hit Player");
                 }
 
-                creature = null;
+                _creature = null;
                 Manager.Pool.PushPoolChild(gameObject);
             }
         }

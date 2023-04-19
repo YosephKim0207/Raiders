@@ -56,7 +56,7 @@ public class PoolManager {
 
             BulletController bullet = childObj.GetComponent<BulletController>();
             bullet.DestPos = shootDir;
-            bullet.creature = creatureCS;
+            bullet.SetCreature = creatureCS;
 
             childObj.SetActive(true);
             return childObj;

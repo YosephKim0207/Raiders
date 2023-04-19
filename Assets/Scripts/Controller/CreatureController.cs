@@ -21,6 +21,10 @@ public class CreatureController : MonoBehaviour {
                 State = CreatureState.Dead;
             }
             else if(value > 0) {
+                if (_isBulletProof) {
+                    return;
+                }
+
                 State = CreatureState.Damaged;
                 _hp = value;
             }
@@ -73,6 +77,7 @@ public class CreatureController : MonoBehaviour {
     void FixedUpdate() {
         UpdateController();
     }
+
 
     protected virtual CreatureState State {
         get { return _state; }
@@ -134,6 +139,7 @@ public class CreatureController : MonoBehaviour {
         }
     }
 
+    // 캐릭터의 StateMachine, Update문에서 작동
     protected virtual void UpdateController() {
         switch (State) {
             case CreatureState.Idle:
@@ -158,12 +164,14 @@ public class CreatureController : MonoBehaviour {
         }
     }
 
+    // 캐릭터의 State가 Idle인 경우 진행되는 함수, Update문에서 작동
     protected virtual void UpdateIdle() {
         _animator.Play("Idle");
         _sprite.flipX = true;
         _rigidbody.velocity = Vector2.zero;
     }
 
+    // 캐릭터의 State가 Move인 경우 진행되는 함수, Update문에서 작동
     protected virtual void UpdateMoving() {
         if (!MoveDir.Equals(CreatureDir.None)) {
             _animator.Play("Walk_Down");
@@ -178,16 +186,14 @@ public class CreatureController : MonoBehaviour {
         
     }
 
+    // 캐릭터의 State가 Attack인 경우 진행되는 함수, Update문에서 작동
     protected virtual void UpdateAttack() {
-        // _coPullTrigger == null ㄷㅐ신 triggerOn을 조건. triggerOn은 GunController에서 사용
         if (_triggerOn) {
             _coPullTrigger = StartCoroutine("CoPullTrigger");
         }
-
-
-
     }
 
+    // 캐릭터의 State가 Jump인 경우 진행되는 함수, Update문에서 작동
     protected virtual void UpdateJump() {
 
 
@@ -195,53 +201,60 @@ public class CreatureController : MonoBehaviour {
         _isBulletProof = true;
 
 
-        //// Player 손 제거
+        // Jump시 Player에 장착된 자녀오브젝트들 숨김
         Transform child = transform.GetChild(0);
         child.gameObject.SetActive(false);
 
         _animator.Play("Jump");
 
+        // 캐릭터 진행방향에 따른 캐릭터 스프라이트 반전
         _sprite.flipX = true;
         if(MoveDir.Equals(CreatureDir.Right) || MoveDir.Equals(CreatureDir.UpRight) || MoveDir.Equals(CreatureDir.DownRight)) {
             _sprite.flipX = false;
         }
         
-        float _jumpSpeed = _speed * _jumpSpeedRate;
-        float dist = (_jumpDest - transform.position).magnitude;
+        float jumpSpeed = _speed * _jumpSpeedRate;
+        float jumpDistance = (_jumpDest - transform.position).magnitude;
 
+        // 점프시 충돌 감지 및 충돌시 점프로 인한 이동 중단
         RaycastHit2D rayHit;
         rayHit = Physics2D.Raycast(this.transform.position, DestPos, 1.5f, LayerMask.GetMask("Collision"));
         if (rayHit.transform != null) {
             DestPos = Vector3.zero;
         }
 
-        if (dist < _jumpSpeed * Time.fixedDeltaTime && rayHit.transform == null) {
+        // 점프 애니메이션이 한 번 재생된 경우 점프 중
+        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+            State = CreatureState.Idle;
+            child.gameObject.SetActive(true);
+            _isBulletProof = false;
+            _isJump = false;
+        }
+        // 충돌 없이 점프로 인한 정상적인 목적지에 도착한 경우 점프 중단
+        else if (jumpDistance < jumpSpeed * Time.fixedDeltaTime && rayHit.transform == null) {
             transform.position = _jumpDest;
             State = CreatureState.Idle;
             child.gameObject.SetActive(true);
             _isBulletProof = false;
             _isJump = false;
         }
-        else if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
-            State = CreatureState.Idle;
-            child.gameObject.SetActive(true);
-            _isBulletProof = false;
-            _isJump = false;
-        }
+        // 정상적으로 점프가 진행 중인 경우 이동
         else {  
-            _rigidbody.MovePosition(transform.position + DestPos * _jumpSpeed * Time.fixedDeltaTime);
+            _rigidbody.MovePosition(transform.position + DestPos * jumpSpeed * Time.fixedDeltaTime);
         }
         
     }
 
+    // 캐릭터의 State가 Damaged인 경우 진행되는 함수, Update문에서 작동
     protected virtual void UpdateDamaged() {
-        //Debug.Log($"{gameObject.name}'s HP : {hp}");
+        Debug.Log($"{gameObject.name}'s HP : {HP}");
         State = CreatureState.Idle;
     }
 
-
+    // 캐릭터의 State가 Dead인 경우 진행되는 함수, Update문에서 작동
     protected virtual void UpdateDead() { }
 
+    // 캐릭터가 총기를 장착한 경우 총기 정보 초기화
     protected virtual void GunInit() {
         _equipedGun = GetComponentInChildren<GunController>();
         if (_equipedGun == null) {
@@ -251,11 +264,11 @@ public class CreatureController : MonoBehaviour {
             GunInfo = _equipedGun.getGunInfo;
             _coMakeBulletWaitSeconds = new WaitForSeconds(GunInfo.shootCoolTime);
             _equipedGun.Equiped = true;
-
         }
-
     }
 
+    // 캐릭터가 총기 발사 시도시 사용하는 코루틴
+    // 총기 발사 속도 및 재장전에 영향을 준다
     IEnumerator CoPullTrigger() {
         _triggerOn = false;
 
@@ -269,6 +282,7 @@ public class CreatureController : MonoBehaviour {
             }
         }
 
+        // 총기 발사 속
         yield return _coMakeBulletWaitSeconds;
 
         _coPullTrigger = null;

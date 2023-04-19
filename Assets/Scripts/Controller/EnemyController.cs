@@ -8,18 +8,16 @@ public class EnemyController : CreatureController {
     FindPathState PathState = FindPathState.UseDirect;
     Coroutine _coDoSomething;
     Coroutine _coFindPath;
-    float _coDoTime = 1.0f;
-    float _coFIndPathTime = 0.25f;
     WaitForSeconds WaitFindPathTime;
-    GameObject _player;
-    GameObject _dropItem;
-    Grid _grid;
-    int xCount;
-    int yCount;
+    
+    
+    //Grid _grid;
+    //int xCount;
+    //int yCount;
     int usePathStackCount = 0;
     Stack<Vector3> _pathStack;
-    Vector3 nextPos;
-    bool _deadFlag = true;
+    
+    bool _isDead = false;
 
     // TODO
     // 몬스터 종류마다 클래스를 따로 두고 관리하는 것보다
@@ -32,13 +30,15 @@ public class EnemyController : CreatureController {
 
         GunInit();
 
-        _player = GameObject.Find("Player");
-        _shootTargetTransform = _player.transform;
+        GameObject player;
+        player = GameObject.Find("Player");
+        _shootTargetTransform = player.transform;
 
-        _grid = Manager.Map.Grid;
-        xCount = Manager.Map.xCount;
-        yCount = Manager.Map.yCount;
-        WaitFindPathTime = new WaitForSeconds(_coFIndPathTime);
+        //_grid = Manager.Map.Grid;
+        //xCount = Manager.Map.xCount;
+        //yCount = Manager.Map.yCount;
+        float coFIndPathTime = 0.25f;
+        WaitFindPathTime = new WaitForSeconds(coFIndPathTime);
     }
 
 
@@ -86,10 +86,10 @@ public class EnemyController : CreatureController {
     protected override void UpdateDead() {
 
         // temp random rate
-        if (_deadFlag) {
+        if (!_isDead) {
             Debug.Log("Eenemy : Dead!");
 
-            _deadFlag = false;
+            _isDead = true;
             int rand = UnityEngine.Random.Range(0, 100);
 
             // 70프로의 확률로 아무 것도 드랍 안 함
@@ -123,16 +123,15 @@ public class EnemyController : CreatureController {
             Debug.Log(Manager.EnemyRespawn.RemainEnemy);
 
             Manager.Pool.PushPoolChild(this.gameObject);
-            State = CreatureState.Move;
-            _deadFlag = true;
         }
     }
 
     void DropItem(string itemName) {
-        _dropItem = Resources.Load<GameObject>($"Prefabs/Items/{itemName}");
-        if (_dropItem != null) {
-            _dropItem = Object.Instantiate<GameObject>(_dropItem, transform.position, Quaternion.identity);
-            _dropItem.name = itemName;
+        GameObject dropItem;
+        dropItem = Resources.Load<GameObject>($"Prefabs/Items/{itemName}");
+        if (dropItem != null) {
+            dropItem = Object.Instantiate<GameObject>(dropItem, transform.position, Quaternion.identity);
+            dropItem.name = itemName;
         }
     }
 
@@ -160,6 +159,15 @@ public class EnemyController : CreatureController {
                 break;
         }
 
+    }
+
+    void OnEnable() {
+        _isDead = false;
+        GameObject player;
+        player = GameObject.Find("Player");
+        if (player) {
+            _shootTargetTransform = player.transform;
+        }
     }
 
     // TODO
@@ -220,6 +228,7 @@ public class EnemyController : CreatureController {
 
 
     void SetPathUseStack() {
+        Vector3 nextPos;
         nextPos = _pathStack.Pop();
         if ((_pathStack.Count > 0) && (nextPos - transform.position).magnitude < 0.5) {
             nextPos = _pathStack.Pop();
@@ -238,16 +247,20 @@ public class EnemyController : CreatureController {
             State = CreatureState.Move;
         }
 
+        float coDoTime;
         switch (State) {
             case CreatureState.Attack:
-                _coDoTime = UnityEngine.Random.Range(0, 2);
+                coDoTime = UnityEngine.Random.Range(0, 2);
                 break;
             case CreatureState.Move:
-                _coDoTime = UnityEngine.Random.Range(2, 7);
+                coDoTime = UnityEngine.Random.Range(2, 7);
+                break;
+            default:
+                coDoTime = 1.0f;
                 break;
         }
 
-        yield return new WaitForSeconds(_coDoTime);
+        yield return new WaitForSeconds(coDoTime);
 
         _coDoSomething = null;
     }

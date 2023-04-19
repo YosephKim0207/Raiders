@@ -5,97 +5,76 @@ using System.Linq;
 using static EnumList;
 
 public class EnemyRespawnManager {
-    Camera _cam;
+    public int RemainEnemy { get => _remainEnemy; set => _remainEnemy = value; }
+    
     int _respawnRange = 5;
     int _remainEnemy = 0;
-    public int RemainEnemy { get { return _remainEnemy; } set { _remainEnemy = value; } }
-    MapManager.Pos pos;
-    MapManager.Pos playerPos;
-    MapManager.Pos respawnRangePos;
-    Stack<MapManager.Pos> respawnPosStack = new Stack<MapManager.Pos>();
-    Vector3 viewLeftDownPos = new Vector3(0.0f, 0.0f, -10.0f);
-    Vector3 vidwRightUpPos = new Vector3(1.0f, 1.0f, -10.0f);
-    float _minX;
-    float _maxX;
-    float _minY;
-    float _maxY;
-    GameObject go;
 
-    MapManager.Pos[] respawnArray;
+    Camera _cam;
+    MapManager.Pos _pos;
+    MapManager.Pos _playerPos;
+    MapManager.Pos _respawnRangePos;
+    Stack<MapManager.Pos> respawnPosStack = new Stack<MapManager.Pos>();
+    Vector3 _viewLeftDownPos = new Vector3(0.0f, 0.0f, -10.0f);
+    MapManager.Pos[] _respawnArray;
 
 
     public void Init() {
-        bool[,] _collisionData = Manager.Map._collsionData;
         _cam = Camera.main;
         CheckMaxCamRange();
     }
 
-
-
-
-    public void Respawn(Vector3 _playerTransPos, GameObject enemy, RespawnPattern respawnPattern = RespawnPattern.NormalRandom, int density = 1) {
+    // playerTransPos를 기준으로 enemyGameObject를 respawnPattern에 따라 density만큼 Respawn
+    public void Respawn(Vector3 playerTransPos, GameObject enemyGameObject, RespawnPattern respawnPattern = RespawnPattern.NormalRandom, int density = 1) {
         respawnPosStack.Clear();
-        playerPos = Manager.Map.CellToArrPos(Manager.Map.Grid.WorldToCell(_playerTransPos));
+        _playerPos = Manager.Map.CellToArrPos(Manager.Map.Grid.WorldToCell(playerTransPos));
 
 
         switch (respawnPattern) {
             case RespawnPattern.NormalRandom:
                 break;
             case RespawnPattern.Square:
-                // Temp
-                SetMaxRespawnRange(_playerTransPos, CheckMaxCamRange());
+               
+                SetMaxRespawnRange(playerTransPos, CheckMaxCamRange());
 
-                SetSquarePattern(_respawnRange, playerPos);
-                MakeEnemy(enemy, density);
+                SetSquarePattern(_respawnRange, _playerPos);
+                MakeEnemy(enemyGameObject, density);
                 break;
         }
-
     }
 
-    void MakeEnemy(GameObject enemy, int density = 1) {
-        // TODO respawn 좌표 만들기
-        //while (respawnPosStack.Count != 0) {
-        //    pos = respawnPosStack.Pop();
-        //    _remainEnemy += 1;
-        //    Vector3Int cellPos = Manager.Map.ArrToCellPos(pos);
-        //    Object.Instantiate(enemy, cellPos, Quaternion.identity);
-        //}
-        //respawnPosStack.Clear();
+    // Respawn에서 전달 받은 GameObject를 density만큼 PoolManager에서 호출 및 생성한다
+    void MakeEnemy(GameObject enemyGameObject, int density = 1) {
         if (density < 1 || density > respawnPosStack.Count) {
             density = respawnPosStack.Count / 4;
         }
 
         for (int i = 0; i < density; ++i) {
-            pos = respawnArray[i];
-            Vector3Int cellPos = Manager.Map.ArrToCellPos(pos);
-            //Object.Instantiate(enemy, cellPos, Quaternion.identity);
-            go = Manager.Pool.UsePool(enemy);
-            go.transform.position = cellPos;
-            go = null;
+            _pos = _respawnArray[i];
+            Vector3Int cellPos = Manager.Map.ArrToCellPos(_pos);
+            GameObject _enemyGameObject;
+            _enemyGameObject = Manager.Pool.UsePool(enemyGameObject);
+            _enemyGameObject.transform.position = cellPos;
 
             RemainEnemy += 1;
-            //Debug.Log(Manager.EnemyRespawn.RemainEnemy);
 
+            Debug.Log(Manager.EnemyRespawn.RemainEnemy);
         }
 
     }
 
+    // 메인 카메라로부터 _viewLeftDownPos를 기준으로 카메라 외곽 x좌표를 반환
     float CheckMaxCamRange() {
         // cam이 현재 반대에서 촬영 중인 것 감안하여 min/max 바뀌어서 변수에 저장
-        // Player의 위치가 달려져도 worldLefDownPos에 저장되는 월드좌표가 x = 10임 뭔가 이상 확인 필요 
-        Vector3 worldLeftDownPos = _cam.ViewportToWorldPoint(viewLeftDownPos);
-        Vector3 worldRightUpPos = _cam.ViewportToWorldPoint(vidwRightUpPos);
-        _maxX = worldLeftDownPos.x;
-        _minX = worldRightUpPos.x;
-        _maxY = worldLeftDownPos.y;
-        _minY = worldRightUpPos.y;
+        Vector3 worldLeftDownPos = _cam.ViewportToWorldPoint(_viewLeftDownPos);
 
-        //Debug.Log($"Cam maxX : {_maxX}");
+        float _maxX;
+        _maxX = worldLeftDownPos.x;
 
         return _maxX;
     }
 
-    // 꼭지점 제외한 사각형 꼴의 리스폰 희망 위치들을 respawnPosStack에 Push
+    // 꼭지점 제외한 사각형 꼴의 리스폰 희망 위치들을 Map Manger로부터 collision체크 후 respawnPosStack에 Push
     void SetSquarePattern(int distance, MapManager.Pos playerArrPos) {
         if (distance < 1) {
             distance = 10;
@@ -136,7 +115,7 @@ public class EnemyRespawnManager {
                 }
 
                 // enemy respawn 위치를 랜덤 순서로 저장
-                respawnArray = respawnPosStack.OrderBy(pos => Random.value).ToArray();
+                _respawnArray = respawnPosStack.OrderBy(pos => Random.value).ToArray();
             }
 
             respawnPos.Y = initYPos;
@@ -144,12 +123,11 @@ public class EnemyRespawnManager {
         }
     }
 
-    // TODO 현 시점 카메라 범위로 NPC 생성시 극심한 렉 발생, 최적화 필요
-    // A* Paht쪽 문제인 것 같음
+    // maxCamRange와 playerTransPos를 기준으로 리스폰할 위치 지정
     void SetMaxRespawnRange(Vector3 playerTransPos, float maxCamRange) {
         playerTransPos.x = maxCamRange - playerTransPos.x;
-        respawnRangePos = Manager.Map.CellToArrPos(Manager.Map.Grid.WorldToCell(playerTransPos));
+        _respawnRangePos = Manager.Map.CellToArrPos(Manager.Map.Grid.WorldToCell(playerTransPos));
 
-        _respawnRange = respawnRangePos.X - playerPos.X + 1;
+        _respawnRange = _respawnRangePos.X - _playerPos.X + 1;
     }
 }
