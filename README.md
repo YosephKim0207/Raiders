@@ -370,4 +370,5 @@ public class PoolManager {
 ### 함수 최적화
 
 - Rigidbody.MovePosisition등 Unity Documentation 권장사항을 참고한 물리 함수 사용
+- 총알 스크립트 내부 연산을 최소화하여 CPU 사용 GC 0.98ms, 스크립트 0.47ms 감소
 
