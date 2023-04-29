@@ -28,7 +28,6 @@
 - 게임 내 중점적으로 생성 / 소멸할 적과 총알 객체에 대한 오브젝트 풀링 적용
 
 [관련스크립트바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/PoolManager.cs)
-
 <details>
 <summary>관련스크립트 펼치기</summary>
 
