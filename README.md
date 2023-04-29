@@ -365,3 +365,9 @@ public class PoolManager {
 ```
 
 </details>
+
+
+### 함수 최적화
+
+- Rigidbody.MovePosisition등 Unity Documentation 권장사항을 참고한 물리 함수 사용
+
