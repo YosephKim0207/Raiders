@@ -22,8 +22,8 @@
 
 ### 오브젝트 풀링 (![구현예시영상]([https://youtu.be/kSDWP_GfiOQ?t=39]))
 
-![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311573-f7349369-7b23-4f1d-b249-d8b53b7a910b.gif)
 
+![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311704-d339b2c3-2948-469e-b3e9-0d7056496190.gif)
 
 - 게임 내 중점적으로 생성 / 소멸할 적과 총알 객체에 대한 오브젝트 풀링 적용
 
