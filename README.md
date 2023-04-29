@@ -28,7 +28,8 @@
 - 게임 내 중점적으로 생성 / 소멸할 적과 총알 객체에 대한 오브젝트 풀링 적용
 
 <details>
-<summry> PoolManager 코드 펼치기 </summary>
+<summry>PoolManager 코드 펼치기</summary>
+
 
 
 ```csharp
