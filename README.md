@@ -20,4 +20,20 @@
 
 --- 
 
-### 오브젝트 풀링 ![구현예시영상]([https://youtu.be/kSDWP_GfiOQ?t=39])
+### 오브젝트 풀링 (![구현예시영상]([https://youtu.be/kSDWP_GfiOQ?t=39]))
+
+![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311573-f7349369-7b23-4f1d-b249-d8b53b7a910b.gif)
+
+
+- 게임 내 중점적으로 생성 / 소멸할 적과 총알 객체에 대한 오브젝트 풀링 적용
+
+
+
+
+### 길찾기 함수 콜 최소화 (![구현예시영상]([https://youtu.be/kSDWP_GfiOQ?t=143]))
+
+
+![길찾기](https://user-images.githubusercontent.com/46564046/235311185-30d1ea47-53ed-4894-a7c0-b5b9d5cb66fd.gif)
+
+- 코루틴 사용 
+- 캐릭터 이동 속도, 필드의 장애물 등을 고려하여 swich문을 통해 필요한 경우에만 길찾기 함수 콜 감소
