@@ -290,11 +290,11 @@ public class PoolManager {
 - 코루틴 사용 
 - 캐릭터 이동 속도, 필드의 장애물 등을 고려하여 swich문을 통해 필요한 경우에만 길찾기 함수 콜 감소
 
-[EnemyController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/EnemyController.cs)
-[MapManager 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/MapManager.cs)
+[EnemyController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/EnemyController.cs) /
+[MapManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/MapManager.cs)
 
 <details>
-<summary>길찾기 코루틴 코드 펼치기</summary>
+<summary>길찾기 코루틴 코드만 펼치기</summary>
 
 
 
