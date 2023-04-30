@@ -20,7 +20,7 @@
 
 --- 
 
-### 오브젝트 풀링 (![구현예시영상]([https://youtu.be/kSDWP_GfiOQ?t=39]))
+### 오브젝트 풀링 [![구현예시영상]](https://youtu.be/kSDWP_GfiOQ?t=39)
 
 
 ![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311704-d339b2c3-2948-469e-b3e9-0d7056496190.gif)
