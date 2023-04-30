@@ -6,7 +6,7 @@
 
 ![uI중심](https://user-images.githubusercontent.com/46564046/235346555-7c71c85d-66e9-4149-bd13-4da8339f69d9.gif)(https://youtu.be/kSDWP_GfiOQ)
 
-[전체영상링크]((https://youtu.be/kSDWP_GfiOQ))
+[전체영상링크](https://youtu.be/kSDWP_GfiOQ)
 
 ---
 
