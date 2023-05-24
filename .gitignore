@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,unity
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,unity
+# Created by https://www.toptal.com/developers/gitignore/api/macos,unity,microsoftoffice
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,unity,microsoftoffice
 
 ### macOS ###
 # General
@@ -33,6 +33,33 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
+
+### TXT ###
+*.txt
+
+### MicrosoftOffice ###
+*.tmp
+
+# Word temporary
+~$*.doc*
+
+# Word Auto Backup File
+Backup of *.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel
+*.xlsx
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
 
 ### Unity ###
 # This .gitignore file should be placed at the root of your Unity project directory
@@ -72,7 +99,6 @@ ExportedObj/
 *.unityproj
 *.sln
 *.suo
-*.tmp
 *.user
 *.userprefs
 *.pidb
@@ -107,4 +133,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,unity
+# End of https://www.toptal.com/developers/gitignore/api/macos,unity,microsoftoffice
