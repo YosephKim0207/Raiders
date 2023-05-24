@@ -1,4 +1,6 @@
-### 길찾기 함수 콜 최적화  [구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=143)
+### 길찾기 함수 콜 최적화  
+
+[구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=143)
 
 
 ![길찾기_용량최적화](https://user-images.githubusercontent.com/46564046/235311817-ffe93472-bddd-450d-aa97-f68bf0f40e0b.gif)
@@ -7,8 +9,6 @@
 - 전투 시스템 및 레벨 디자인 방향성을 고려하여 장애물 발견시에만 길찾기 함수 호출
 - 캐릭터의 이동속도가 느린 점을 이용하여 일정 시간 동안 기존의 경로Stack 재사용
 - 코루틴 사용 
-
-<img width="779" alt="image" src="https://github.com/YosephKim0207/Raiders/assets/46564046/ce6f35fb-023e-41ac-9655-771d332b730b">
 
 [EnemyController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/EnemyController.cs) /
 [MapManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/MapManager.cs)
