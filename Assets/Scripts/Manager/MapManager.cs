@@ -68,18 +68,11 @@ public class MapManager {
             return false;
         }
 
-        //int x = cellPos.X - MinX;
-        //int y = MaxY - cellPos.Y + 1;
-
-        // collsion cellPos에 대해 false return
-        //if (_collsionData[cellPos.Y, cellPos.X] == true){
-        //    //Debug.Log("coll detect");
-        //}
         return !_collsionData[cellPos.Y, cellPos.X];
     }
 
     // 다중 캐릭터가 장거리에서 동시에 길찾기 실행시 cpu에 과부하 발생 및 프레임 저하
-    // 장거리일 경우 일단 직선 경로로 가도록 하기, 가다가 collsion 만나면 그때부터 A* 실행하도록
+    // 장거리일 경우 일단 직선 경로로 가도록 하기, 가다가 collsion 만나면 그때부터 A* 실행
     #region A*
     // 우선순위큐
     // F : 최종점수 (G + H) - H는 현재부터 목적지까지의 추정 비용
@@ -118,7 +111,7 @@ public class MapManager {
     int _digCost = 14;
     
     // grid를 사용하여 pathfind를 하는 이유 : 플레이어는 8방위 이동만 가능하기 때문에
-    // pathFind할 때 그리드를 노드로 취급하여 F를 계산하려고 
+    // FindPath할 때 그리드를 노드로 취급하여 F를 계산하려고 
     public Stack<Vector3> FindPath(Transform curPos, Transform destPos) {
         PriorityQueue<PQNode> openPQ = new PriorityQueue<PQNode>();
         int[,] _openCheck = new int[yCount, xCount];
@@ -183,7 +176,6 @@ public class MapManager {
 
             
 
-            // TODO 8방위 F 구하여 우선순위큐에 넣기
             for (int i = 0; i < _deltaY.Length; ++i) {
                 // 체크할 위치 설정
                 Pos nextArrPos = new Pos(curNode.Y + _deltaY[i], curNode.X + _deltaX[i]);

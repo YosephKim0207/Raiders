@@ -1,0 +1,2148 @@
+fileFormatVersion: 2
+guid: 61baae71084d03e4282fabbb9ec5cdf3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7431046806581068874
+    second: Razer_0
+  - first:
+      213: -7642123585578032111
+    second: Razer_1
+  - first:
+      213: -5693605816646692216
+    second: Razer_2
+  - first:
+      213: -2824213056032320015
+    second: Razer_3
+  - first:
+      213: -9063910594407271665
+    second: Razer_4
+  - first:
+      213: 6271407222991359486
+    second: Razer_5
+  - first:
+      213: -1383448836910003947
+    second: Razer_6
+  - first:
+      213: -3458621775963890886
+    second: Razer_7
+  - first:
+      213: -6737981917693785095
+    second: Razer_8
+  - first:
+      213: -7608664207525724405
+    second: Razer_9
+  - first:
+      213: 4316152334496563928
+    second: Razer_10
+  - first:
+      213: 626573852676713486
+    second: Razer_11
+  - first:
+      213: -7455277428555536908
+    second: Razer_12
+  - first:
+      213: 8408742946798958783
+    second: Razer_13
+  - first:
+      213: 51114596582914360
+    second: Razer_14
+  - first:
+      213: 8663696686218830450
+    second: Razer_15
+  - first:
+      213: -4828262263064517487
+    second: Razer_16
+  - first:
+      213: -6763052061245974478
+    second: Razer_17
+  - first:
+      213: 4708136566232774843
+    second: Razer_18
+  - first:
+      213: 8927165197293781550
+    second: Razer_19
+  - first:
+      213: 7266153007246144817
+    second: Razer_20
+  - first:
+      213: 4569666233217839951
+    second: Razer_21
+  - first:
+      213: 7915711909048829971
+    second: Razer_22
+  - first:
+      213: 4735879237510121918
+    second: Razer_23
+  - first:
+      213: 3341265311747906164
+    second: Razer_24
+  - first:
+      213: 8435986844124051373
+    second: Razer_25
+  - first:
+      213: 7799885554652136683
+    second: Razer_26
+  - first:
+      213: 6931558393448443378
+    second: Razer_27
+  - first:
+      213: -6792097222741506316
+    second: Razer_28
+  - first:
+      213: -4494665053583730227
+    second: Razer_29
+  - first:
+      213: 7736020462842985653
+    second: Razer_30
+  - first:
+      213: -8854684807542082998
+    second: Razer_31
+  - first:
+      213: 7249175778853608352
+    second: Razer_32
+  - first:
+      213: 4365446712847094071
+    second: Razer_33
+  - first:
+      213: -4678271208121253520
+    second: Razer_34
+  - first:
+      213: -4717091232809527453
+    second: Razer_35
+  - first:
+      213: -5862066986711910974
+    second: Razer_36
+  - first:
+      213: -3874832729101799737
+    second: Razer_37
+  - first:
+      213: 2039509738516654285
+    second: Razer_38
+  - first:
+      213: -2501138785694837137
+    second: Razer_39
+  - first:
+      213: 4794259800194290362
+    second: Razer_40
+  - first:
+      213: 4233825253658247340
+    second: Razer_41
+  - first:
+      213: 7834867367003085842
+    second: Razer_42
+  - first:
+      213: -1200837669126214427
+    second: Razer_43
+  - first:
+      213: 6184721120518514148
+    second: Razer_44
+  - first:
+      213: 3600790185688756401
+    second: Razer_45
+  - first:
+      213: -8371123250106544351
+    second: Razer_46
+  - first:
+      213: -4157695453317346332
+    second: Razer_47
+  - first:
+      213: -307503355473946040
+    second: Razer_48
+  - first:
+      213: -5877792658295288453
+    second: Razer_49
+  - first:
+      213: -5975061815995192685
+    second: Razer_50
+  - first:
+      213: 306178679705653116
+    second: Razer_51
+  - first:
+      213: 2488488075778001612
+    second: Razer_52
+  - first:
+      213: -5750648032267250104
+    second: Razer_53
+  - first:
+      213: 7419995781108830647
+    second: Razer_54
+  - first:
+      213: 1289949515429280853
+    second: Razer_55
+  - first:
+      213: 6430408605711128037
+    second: Razer_56
+  - first:
+      213: -5534201700016939810
+    second: Razer_57
+  - first:
+      213: 2518458455152192011
+    second: Razer_58
+  - first:
+      213: -7781096590546285996
+    second: Razer_59
+  - first:
+      213: -6352396506067197107
+    second: Razer_60
+  - first:
+      213: -6393819179085290504
+    second: Razer_61
+  - first:
+      213: -3070229994631861687
+    second: Razer_62
+  - first:
+      213: 2691588215479605688
+    second: Razer_63
+  - first:
+      213: 8427018850175785310
+    second: Razer_64
+  - first:
+      213: -7239040824787467984
+    second: Razer_65
+  - first:
+      213: -1735979993811778698
+    second: Razer_66
+  - first:
+      213: -7446139902266967645
+    second: Razer_67
+  - first:
+      213: 4883793606859382131
+    second: Razer_68
+  - first:
+      213: -116097301808452999
+    second: Razer_69
+  - first:
+      213: 1141519710426553222
+    second: Razer_70
+  - first:
+      213: -7321975791598406873
+    second: Razer_71
+  - first:
+      213: 6505481016715456411
+    second: Razer_72
+  - first:
+      213: 8179105619468489953
+    second: Razer_73
+  - first:
+      213: 6178016398145036421
+    second: Razer_74
+  - first:
+      213: -7637252949136651157
+    second: Razer_75
+  - first:
+      213: 7994529363802470624
+    second: Razer_76
+  - first:
+      213: 2969074069965124803
+    second: Razer_77
+  - first:
+      213: -1071398705929659395
+    second: Razer_78
+  - first:
+      213: -7279472472974887722
+    second: Razer_79
+  - first:
+      213: 4055139897507387985
+    second: Razer_80
+  - first:
+      213: -5549253742375043076
+    second: Razer_81
+  - first:
+      213: -7742485247392739659
+    second: Razer_82
+  - first:
+      213: -9106364000805500944
+    second: Razer_83
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Razer_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 182
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb3f600d4e9fd890800000000000000
+      internalID: -7431046806581068874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 156
+        width: 11
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114acffa619b1f590800000000000000
+      internalID: -7642123585578032111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 164
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8821daffcaf3cf0b0800000000000000
+      internalID: -5693605816646692216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_3
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 164
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f55c2950316ec8d0800000000000000
+      internalID: -2824213056032320015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_4
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 168
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0374784655863280800000000000000
+      internalID: -9063910594407271665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 166
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd083854a3880750800000000000000
+      internalID: 6271407222991359486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_6
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 163
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5194d07dc900dcce0800000000000000
+      internalID: -1383448836910003947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 144
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3bdd3fb1d18000d0800000000000000
+      internalID: -3458621775963890886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_8
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 149
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb4bdc2521ed72a0800000000000000
+      internalID: -6737981917693785095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_9
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 143
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f33373738986690800000000000000
+      internalID: -7608664207525724405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 152
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d204262ead06eb30800000000000000
+      internalID: 4316152334496563928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_11
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 149
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ce75a699902b800800000000000000
+      internalID: 626573852676713486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_12
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 156
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f5a5f0bda8898890800000000000000
+      internalID: -7455277428555536908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_13
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 154
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8f58f982bd1b470800000000000000
+      internalID: 8408742946798958783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 118
+        width: 11
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839792c647895b000800000000000000
+      internalID: 51114596582914360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_15
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 112
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2726dcfdb32ab3870800000000000000
+      internalID: 8663696686218830450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 137
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194ad9f8d019efcb0800000000000000
+      internalID: -4828262263064517487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_17
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 133
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238d5f38bffc422a0800000000000000
+      internalID: -6763052061245974478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_18
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 134
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb8f4502349a65140800000000000000
+      internalID: 4708136566232774843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 142
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e220de3e279a3eb70800000000000000
+      internalID: 8927165197293781550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_20
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 142
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 135fa8099af86d460800000000000000
+      internalID: 7266153007246144817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_21
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 139
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43fb0d5a37ba6f30800000000000000
+      internalID: 4569666233217839951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_22
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 127
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3184f23ca024add60800000000000000
+      internalID: 7915711909048829971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_23
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 119
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb940f2231939b140800000000000000
+      internalID: 4735879237510121918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_24
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 119
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a9117291f8e5e20800000000000000
+      internalID: 3341265311747906164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_25
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 131
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da7f1e5c655a21570800000000000000
+      internalID: 8435986844124051373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_26
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 120
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4cdbd1692ce3c60800000000000000
+      internalID: 7799885554652136683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_27
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 131
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd2f5542a7d13060800000000000000
+      internalID: 6931558393448443378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_28
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 122
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f6439edf8f9db1a0800000000000000
+      internalID: -6792097222741506316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_29
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 111
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc997c092fdbf91c0800000000000000
+      internalID: -4494665053583730227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_30
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 118
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bcb8eeaf9ddb5b60800000000000000
+      internalID: 7736020462842985653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_31
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 120
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a42f768e417dd1580800000000000000
+      internalID: -8854684807542082998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_32
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 124
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab5fec86fe3a9460800000000000000
+      internalID: 7249175778853608352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_33
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 84
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731d52df7ae259c30800000000000000
+      internalID: 4365446712847094071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_34
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 85
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 071cefc6f11731fb0800000000000000
+      internalID: -4678271208121253520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_35
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 84
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36757471486898eb0800000000000000
+      internalID: -4717091232809527453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_36
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 109
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5fd775221c5aea0800000000000000
+      internalID: -5862066986711910974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_37
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 114
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce64d1a924d93ac0800000000000000
+      internalID: -3874832729101799737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_38
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 111
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc82c382d4bcd4c10800000000000000
+      internalID: 2039509738516654285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_39
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 107
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6615b8a68b2a4dd0800000000000000
+      internalID: -2501138785694837137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_40
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 112
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab2148f13e1a88240800000000000000
+      internalID: 4794259800194290362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_41
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 88
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca0c06de2a191ca30800000000000000
+      internalID: 4233825253658247340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_42
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 96
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cd4800c5a0bbc60800000000000000
+      internalID: 7834867367003085842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_43
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 78
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ece2d29084c55fe0800000000000000
+      internalID: -1200837669126214427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_44
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 104
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e5ac5f471b84d550800000000000000
+      internalID: 6184721120518514148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_45
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 105
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0f0b8989398f130800000000000000
+      internalID: 3600790185688756401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_46
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 104
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12fc26291cbc3db80800000000000000
+      internalID: -8371123250106544351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_47
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 104
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eb43cc7306ec46c0800000000000000
+      internalID: -4157695453317346332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_48
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 81
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a1cb1d3578bbbf0800000000000000
+      internalID: -307503355473946040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_49
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 86
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7d09ea18b2ed6ea0800000000000000
+      internalID: -5877792658295288453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_50
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 91
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a2b928fe0541da0800000000000000
+      internalID: -5975061815995192685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 91
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f47a113e3cf3400800000000000000
+      internalID: 306178679705653116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_52
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 91
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca0b8868b2e88220800000000000000
+      internalID: 2488488075778001612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_53
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 63
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846596835189130b0800000000000000
+      internalID: -5750648032267250104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_54
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 50
+        width: 5
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b193ef99de19f660800000000000000
+      internalID: 7419995781108830647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_55
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 63
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c7955ff32d6e110800000000000000
+      internalID: 1289949515429280853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_56
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 68
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5d600ae866d3950800000000000000
+      internalID: 6430408605711128037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_57
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 50
+        width: 9
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc902310e09233b0800000000000000
+      internalID: -5534201700016939810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_58
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 50
+        width: 9
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0aece02f9c53f220800000000000000
+      internalID: 2518458455152192011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_59
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 66
+        width: 12
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a4c7d70edf30490800000000000000
+      internalID: -7781096590546285996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_60
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 77
+        width: 23
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43ae6fb801c7d7a0800000000000000
+      internalID: -6352396506067197107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_61
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 70
+        width: 4
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3aa8025579447a0800000000000000
+      internalID: -6393819179085290504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_62
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 50
+        width: 23
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ae73f261a5465d0800000000000000
+      internalID: -3070229994631861687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_63
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 49
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b91a49a8317a5520800000000000000
+      internalID: 2691588215479605688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_64
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 33
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e599f38fef8c2f470800000000000000
+      internalID: 8427018850175785310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_65
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 63
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0310ef359b2c98b90800000000000000
+      internalID: -7239040824787467984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_66
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 64
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6730aaba46f88e7e0800000000000000
+      internalID: -1735979993811778698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_67
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 39
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9f381d53ff9a890800000000000000
+      internalID: -7446139902266967645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_68
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 49
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d5d25f868b6c340800000000000000
+      internalID: 4883793606859382131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_69
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 49
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a635e7e1a836ef0800000000000000
+      internalID: -116097301808452999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_70
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 33
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68bd41ce02e77df00800000000000000
+      internalID: 1141519710426553222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_71
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 16
+        width: 15
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72374cf9fcd136a90800000000000000
+      internalID: -7321975791598406873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_72
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 15
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f2f56648c184a50800000000000000
+      internalID: 6505481016715456411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_73
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 35
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e412d4e935028170800000000000000
+      internalID: 8179105619468489953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_74
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 16
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58029fb7e29bcb550800000000000000
+      internalID: 6178016398145036421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_75
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 18
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cc7ea18e6030690800000000000000
+      internalID: -7637252949136651157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_76
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 27
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e830eb791642fe60800000000000000
+      internalID: 7994529363802470624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_77
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 16
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c43814c225443920800000000000000
+      internalID: 2969074069965124803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_78
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 1
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbdf30bd80a121f0800000000000000
+      internalID: -1071398705929659395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_79
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 1
+        width: 9
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4f818aa5e1afa90800000000000000
+      internalID: -7279472472974887722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_80
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a11717040c64830800000000000000
+      internalID: 4055139897507387985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_81
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 15
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff7a3d5f171df2b0800000000000000
+      internalID: -5549253742375043076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_82
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be047e50ba2d8490800000000000000
+      internalID: -7742485247392739659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Razer_83
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1
+        width: 32
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f745985032bf9180800000000000000
+      internalID: -9106364000805500944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7afd0e40391b3644c8e7a3eb3f8f2923
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

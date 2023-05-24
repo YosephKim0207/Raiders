@@ -1,0 +1,34 @@
+﻿using System;
+
+// Token: 0x02001411 RID: 5137
+public enum GunClass
+{
+	// Token: 0x0400766E RID: 30318
+	NONE,
+	// Token: 0x0400766F RID: 30319
+	PISTOL,
+	// Token: 0x04007670 RID: 30320
+	SHOTGUN = 5,
+	// Token: 0x04007671 RID: 30321
+	FULLAUTO = 10,
+	// Token: 0x04007672 RID: 30322
+	RIFLE = 15,
+	// Token: 0x04007673 RID: 30323
+	BEAM = 20,
+	// Token: 0x04007674 RID: 30324
+	POISON = 25,
+	// Token: 0x04007675 RID: 30325
+	FIRE = 30,
+	// Token: 0x04007676 RID: 30326
+	ICE = 35,
+	// Token: 0x04007677 RID: 30327
+	CHARM = 40,
+	// Token: 0x04007678 RID: 30328
+	EXPLOSIVE = 45,
+	// Token: 0x04007679 RID: 30329
+	SILLY = 50,
+	// Token: 0x0400767A RID: 30330
+	SHITTY = 55,
+	// Token: 0x0400767B RID: 30331
+	CHARGE = 60
+}

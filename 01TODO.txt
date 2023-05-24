@@ -1,0 +1,285 @@
+Creature의 _target을 자녀 오브젝트 Gun을 찾아 전달 :
+
+
+
+UpdateAttack() 여부 전달 :
+> Creature단에서 자녀 오브젝트의 컴포넌트에 전달
+
+
+[해결]
+현재 마우스를 눌렀다 떼었을 때만 총알이 이동하는 현상 발생
+총알 오브젝트 자체는 누르고 있는 동안 계속 생겼다 없어지고 있다
+아마도 GunController_CoShoot의 포지션 세팅쪽 문제
+(없어지는 것은 왜지??;;;)
+
+[해결]
+Bullet 001은 정상 작동
+Bullet 003은 비정상 작동함(위의 케이스)
+> 총알의 레이어가 bullet이 아니어서 생긴 충돌로 인한 poolpush 문제
+
+[해결]
+지금 coroutine 시간 제한 안 걸리는 중
+> coroutine 트리거들(update문에서 코루틴 실행시키는 트리거들) 수정)
+
+[해결]
+Player기준으로 target을 잡아버리면 shootDir이 조준점과 어긋남
+총 point 기준으로 잡아야 함
+> mouseManager로 마우스 클릭시에만 마우스 위치 정보를 가져오는 방식 시도
+> Camera.main을 못 불러오네..?
+> 불러오긴 하는데 debug로 정보 뜨지만 데이터를 다른 쪽으로 넘기면 null 뜸. 스택오버에 물어보기
+
+> 다른 곳에서 마우스 좌표 안 불러오고 그냥 마우스 좌표 매번 가져오면 되지 않나?
+
+> 추가 시도 : 이벤트/델리게이트로 해서 마우스 클릭시 bullet에서 리스너가 작동하게 해보기
+> 근데 이건 플레이어 기준이고 몬스터 기준에서는 걍 target이면 되지 않나?
+> 공통적으로 쓰려면 creature단에서 UpdateAttack 실행시 타겟을 bullet에 전달해줘야할듯?
+> Creature의 UpdateAttack 실행시 이벤트 호출
+Enenmy - Enemy 클래스에서 Creature의 _target에 전달
+Player - MousePos를 Creature 클래스의 _target에 전달
+
+
+[해결]
+null 문제 해결하니 총알이 원하는 방향으로 안 날아감
+마우스 움직이는 것에 대한 부하가 심해짐
+>> 마우스 위치 인식하는 것에 대한 방식 변경 필요
+>> 왜 null 문제 발생하는지 알아냈으니 마우스 클릭시 위치에 대한 트래킹을 Manager로 이관하기
+
+[해결]
+총 바꾸면 기존 pool 삭제하기
+
+[해결]
+bulletController에서 총알 발사 주체가 누구인지 구분 가능해야할 것
+현재는 OnTriggerEnter2D에서 플레이어와 충돌하는 경우 총알 제거되지 않음
+> 총알 pool의 생성이 별도로 되지 않고 총 하위에 생기도록할까?, 
+> pool의 매개변수로 parent를 설정하지 않으면 null - 별도의 Pool오브젝트 아래로
+> pool의 매개변수르 parent를 설정하면 해당 parent 하위에 pool이 생기도록..?
+
+[해결]
+현재는 trigger에서 enemy 충돌시 무시, enemyController에서 다시 collsion 판별
+하지만 총알 발사 주체에게는 데미지를 안 주고 다른 객체에는 데미지를 줄 수 이쓴 방법 고민해야 함
+현재 코드로는 enemy가 총알 충돌을 판별하지도 못함
+다른 사람들은 발사주체 판별 및 총알 충돌을 어떻게 판별하는지 확인하기
+
+[해결]
+BulletController의 68행 targetPos 설정시 null 참조 오류
+> 추적하다보니 Parent 설정이 이상함 L-Value가 null로 뜸
+> GunController에서 parent 참조하는 코드 참고해보기
+> 왜 Enemy가 사격해서 if(shooterType == CreatureType.Player) 조건문이 실행되지 않아야 함에도 실행이 되지? 디버깅 해보면 분명 shooterType은 Enemy로 되어있음
+> 지금 보니깐 총알이 pool에 처음 생성시 초기값이 Player로 되는 것 같음,, 왜지,,
+
+>> 이벤트 함수 순서를 보니 OnEnable이 Start보다 먼저 실행 됨
+>> OnEnable에서 shooter와 shooterObj가 설정되지 않은 상태로 SetBullet~이 실행되기 때문에 생기던 문제였음
+> GunController로부터 ShootPoint를 bulletObj 생성 이후 전달 받음.
+> 문제 1 : Awake에서 SetBulletRotation() 실행시 총알 발사 안 됨
+> 문제 2 : Init에서 SetBulletRotation() 실행시 _shootPoint가 null
+> _shootPoint는 Init에서 null & 최초 발사시 OnEnable에서 null & pop에서도 최초 1회 null
+>> bullet의 parent를 아예 GunShootPoint로 설정하는 것 고려해야 함
+>> _shootPoint를 GunController등 외부에서 설정하지 않고 parent의 position으로 잡고
+>> Gun에서 bullet의 스크립트에 접근해서 변수 값을 바꾸는 것을 없애 성능 향상 꾀할 수도 있음
+
+[해결]
+Enemy가 마우스의 위치에 사격, player는 마우스를 눌러도 사격하지 않음
+> BulletController를 보면 마우스 위치에 사격하도록 되어있음
+> Player의 target을 Manager.Mouse.CheckMousePos로 /
+> Enemy의 target은 Player로 설정 후
+> bullet에서 parent의 target 정보를 _targetPos로 하는 것으로 하기 
+
+[해결 - pool 위치를 초기처럼 별도로 뺌]
+[!!! Critical]
+서로 다른 객체들이 동일한 총알을 사용하는 경우, Dictionary에 총알 이름으로 Key가 중복 생성되는 문제 발생
+
+[해결]
+왜 Enemy가 쏜 총알이 발사도 안 되는데 Enemy가 Damaged가 되지?
+> 현재 나타나는 상황
+> State == Attack 
+> bulletController 미작동
+> Enemy는 피격되어 Damaged 상태가 됨
+>>BulletController에서 _shutterType의 초기값이 Player라 OnEnable되는 즉시 Player의 Bullet이 Enemy와 충돌하는 판정이 발생한 것
+
+[해결]
+총기회전시 마우스 위치 정보가 오브젝트 중심이 아닌 [0,0,0]을 기준으로 하는 것 같음
+> 위의 사항을 수정하면서 추가로 90도만 
+>> 총기 소유자 기준으로 방향벡터 구해줌
+
+[해결]
+총기 회전시 filp.y 해주기
+
+- 해결 필요
+[0] 게임 스타일을 몬스터 때거리로 나오게 하기(뱀서처럼)
+>> 카메라 범위 외부 포지션 설정시 square에서 월드좌표 > 셀 포지션 > collision 변환하던 것 이용해서 센터부터 카메라 경계를 distance로 설정하기 
+
+[0] UI 추가하기 - 아이템에 따라 Fever
+
+[0]
+몬스터 사망시 아이템 나오게 하기
+>> 습득한 아이템이 정상적으로 사용 안 됨. 해결 필요 
+
+
+
+[1] 총알 회전 없도록 하기
+>> 초기 세팅시 그냥 rotate 값까지 애초에 설정하기(회전 없이)
+
+[1]
+총알의 초기 세팅에 시간이 걸림 / 총구에서 총알이 발사되는 속도가 좀 느림
+> 약 1프레임 정도 딜레이 생김(0.03~0.04초 3-4ms)
+> 반복문에서 호출되는 camera.main 캐싱 / getcomponet의 trygetcomponent로 변화(allocat 줄임)등을 통한 최적화 결과
+> 0.02~0.01초 정도로 딜레이 낮춤
+
+[해결]
+총알 reload 직후 총알 연발로 나가는 문제 
+
+
+[2]
+총알 발사시 이전 총알의 rotate정보가 있어서 생성시 회전하고 이동, 부자연스러움
+
+[3]
+이동 중 총알 발사시 총알의 생성 위치가 이동하며 움직여지기 전의 총구 위치에서 발사되는 경우가 있음([1]과 연관)
+
+> bullet의 OnEnable에서 델리게이트를 구독하고 Gun에서 bullet UsePool 즉시 해당 델리게이트에 탄환 정보, 발사자 정보 등을 구조체 혹은 클래스 형태로 송출, SetBulletRotate에서 전달 받은 정보를 사용한다면 레이턴시는 얼마나 줄어들까?
+
+> 자주 실행되는 코루틴의 경우 UniRx의 MicroCoroutine을 활용하면 좋다고 함
+
+> 코루틴의 new waitforseconds등은 매번 가비지 수집 대상임, 미리 변수에 담아두기
+> 총알 발사 숫자가 이상해짐
+-------------------
+
+[4]
+총기 spriteRenderer flip.y시 gun의 point 오브젝트 위치는 flip이 아니기 때문에 총알이 생성되는 위치가 시각적으로 어긋남
+
+-------------------
+
+[5]
+Camera.main은 비용이 비싸기 때문에 캐싱해두고 사용하는 것이 바람직하다
+
+[6]
+GunController의 OnDisable에 총알 pool 삭제 부분 수정하기
+
+[]
+
+GunController에서 총기 회전시 target의 위치정보 필요함
+현재는 bulletController에서 shooter로부터 target 정보를 가져오는데, GunController에서 target 정보 가져오게 된다면 추후 bulletController에서 조건문을 통해 shooter를 확정짓고 target 정보를 가져오는 것이 아닌, GunController로부터 target 정보를 가져오도록 변경하기
+
+GunController에서 shooter가 Enemy인 경우 init에서 _aimTarget 설정 요건 추가 세팅해주기
+
+총기 회전 설정해준 후 마우스 움직이는 동안 총알이 멈추며 마우스 회전과 함께 회전함
+> 총이 총알의 부모로 설정되면서 총알이 같이 움직이는 문제 발생하는듯!
+> 별개로 움직이도록 설정하던지 자녀가 아니게 해야할듯,,,
+> 아니면 총기 습득시 grip 위치로 오도록 하던지,,
+
+
+총알을 총의 자녀에서 뺴어 처음 pool 구조로 바꾸고 이벤트 핸들러로 사격시 bullet의 코루틴 내부의 이벤트 핸들러에 발사위치(총구 위치/타겟위치) 전달하는 것은?
+> 이벤트가 구독된 모두에게 전달되는데 그러면 플레이어/적들의 총구 및 타겟 좌표에 혼선이 생길 수 잇음
+> 총기에서 총알 정보를 bulletController로 전달시 전달 시점이 OnEnable에서 필요한 정보들을 요구하는 시점보다 늦어져 null 발생
+> 따라서 총알에서 총기로부터 정보 가져오도록 하기
+
+총알 충돌시 bulletController의 trigger를 이요하는 것이 맞는지 고민해보기
+
+게임 시작시 HP 선언되면서 if조건에 의해 state == damage 한 번 실행되고 시작함
+수정하는게 깔끔할 듯
+
+
+
+
+
+0 Enemy 인공지능 설정
+
+[해결]
+MapCollsioin Data 생성하기
+> cellBounds로 크기 측정하려고 보니깐 한 번 타일이 생성되었으면 지워도 기존의 최대 타일맵 크기가 저장되네??? 이게 뭐꼬,,
+> 타일맵 컴포넌트에서 compressTilemapBounds하니깐 현재 타일맵 크기로 돌아옴
+> 코드상으로는 tilemap.CompressBounds(); >> edit상에서만 사용되도록 하기. 나는 #if UNITY_EDITOR using UnityEditor; #endif를 했고, 인터넷에서는 상단에 [ExecuteInEditMode]를 사용함
+
+
+[해결]
+왜 node의 x/y 좌표가 nextPos에서 뒤집어지지?
+> Pos생성시 생성자 매개변수 순서 안 지킴
+
+[해결]
+cellPos to ArrayPos로 바꾼 것은 좋은데 170행 CheckCollision 및 이하 if문에서 Min/Max 판단은 CellPos로 하고 있음 수정 필요
+
+[해결]
+현재 cellPos는 grid좌표로 -값을 갖고 있는데 open이나 closed를 체크할 때는 0,0~30,29까지 배열을 갖고 있음 수정 필요
+
+
+[해결]
+col을 피해가지 않는 현상 발생
+> curNode == dest일 때 break하지 않는 문제였음
+> colsed문에서 continue가 먼저 실행되기 때문
+>> break 조건문을 continue 앞으로 순서 옮기기
+
+
+[해결]
+중간중간 프레임이 급속도로 떨어지는 경우 발생
+> F값이 3-400까지 치솟음
+>> checkCollision 함수의 좌표 계산이 잘못되었기 때문
+>> 함수 수정으로 해결
+
+[해결]
+[문제 발생할 때마다 수정 중 / col오브젝트를 Grid 크기 이내의 것들을 사용하도록 바꿔주자]
+player가 coll사이에 숨으면 연산이 폭증하는 현상
+> 아마도 오브젝트들이 collision경계에 있을 때 접근한 위치와 colMap에서 갈 수 없다고 판단한 위치가 모순되기 때문에 발생하는 현상으로 보임 수정 필요
+
+
+// TODO
+Enemy가 collsion을 돌아서 player에게 접근하지 못하는 현상
+> Enemy가 collision을 돌아 player에게 접근할 때 collsion을 피하려고 하지만 colArray상의 좌표와 실제 게임 상의 EnemyObject위치가 일치하지 않아 collsion을 수직으로 피하는 것이 아니라 비스듬히 지나치려고 하면서 collsion과 충돌하는 현상 때문
+>> 일단 enemy가 다른 enemy나 multiPlayer와의 충돌 탐지 및 경로 수정을 위해 ray를 발사하기로 했으니 해당 기능을 추가하여 살펴보기로 하자
+>> ray에 collisioin 판정시 이동방향 우측으로 90도 방향으로 움직여주기
+>> 또는 EnemyController에서의 NextPos이 _target 주변이 아닌 경우 슬쩍 이동하게 만들기 
+
+[0]
+길찾기에서 결국 best라고 생각한 길이 collision의 모양 때문에 문제가 되는 경우가 있다.
+이를 해결하기 위해 collsion이 있다면 그 주변의 길은 이용하지 않도록 Path 코드를 변경해보자
+
+[1]
+리젠 지역  >> 뱀서랑 유사하게 만들기 / 몬스터 떄거리
+map에 몬스터 리젠지역을 render되지 않는 오브젝트로 지정, 
+해당 지역 몬스터가 죽거나 특정 조건 발생시 그 지역에 리젠시키기
+
+Enemy가 map의 collision 정보를 가져오기
+> Enemy는 mapCollision.txt로부터 정보를 가져오기
+> Enemy가 pathFinding을 하면서 mapCollision 정보를 가져다 쓰기 (그러려면 자신의 현재 tilemap 위치를 알아야 하는데?)
+> grid에서 cellToWorld에 현재 vector3Int를 인자로 넣어주면 현재 위치가 나오는듯?!
+> vector3를 vector3Int로 변환이 안 되는데.?
+> vector3Int.FloorToInt로 가능
+
+노드로부터 이동 가능한 노드들의 f정보를 open에 넣음
+> open에서 f가 가장 작은 가진 노드 가져옴
+(f가 가장 작은 
+> 해당 노드의 parent 정보 저장
+> 해당 노드를 open에서 삭제
+> 해당 노드가 dest와 일치하는지 확인
+> (일치하는 경우 부모들의 연쇄 정보를 이용)
+> 해당 노드가 dest와 불일치하는 경우
+> 해당 노드의 이동 가능한 노드들의 f정보를 open에 저장
+> 위의 내용 반복
+
+
+
+
+> 직선거리로 이동하다가 장애물을 발견시에만 A*를 사용하는 경우(이동 가능한 경우를 tilemap에서 가져오는 경우) 플레이어보다 이동에 있어 이점이 생김(플레이어는 8방위로만 이동 가능하지만 enemy는 장애물이 있지 않는 한 360도로 이동 가능하기 때문)
+> 따라서 애초에 A* 기반으로 행동하도록 하자
+> 이동 중 다른 enemy / 다른 멀티 플레이어와 충돌할 수 있기 때문에 raycast를 통해 실시간 경로 수정이 가능하도록 한다
+
+> A*를 개선한다
+> 모든 노드를 계산하는 것이 아니라
+> 우리는 목적지와 collsion들을 알고 있으니 해당 정보를 이용하여 최단거리를 구한다
+> 
+
+
+
+
+
+
+> cellPos를 가져옴
+> h(x) : 자신이 갈 수 있는 0(collsion이 없는) 각 cellPos와 target위치 사이의 거리를 구함 
+> h(x)가 가장 작은 경로로 이동 (각 cellPos로 이동하는데 소요되는 비용이 모두 동일하기 때문)
+> 일단 직선거리로 가다가 collsion 마주치면 해당 AI를 이용하는 쪽으로 바꿀까? 일단 직선이 최단거리인 것은 맞으니깐
+> 총알이 Collsion에 닿아 안 맞는 경우는 어쩌고?
+> 총알이 안 맞으면 _bulletController에서 _shooter에게 총알이 안 맞고 있다고 handler로 정보 쏘아주기?
+
+0과 1로 만든 맵 데이터를 토대로 enemy자신의 위치와 적 사이에 collision이 있다면 공격하지 않고 이동하기
+이동하려는 경로에 map_collsion이외(이것들은 위의 case에서 걸러지니깐)의 collision obj(Enemy등)가 있는지 탐지하고, 있다면 a*알고리즘을 현 위치를 시작점으로 재실행(어떻게 피해서 가지?)
+
+
+네트워크 설정

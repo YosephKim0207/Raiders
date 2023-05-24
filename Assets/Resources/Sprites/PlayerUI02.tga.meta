@@ -1,0 +1,804 @@
+fileFormatVersion: 2
+guid: 3aabe5d97ce11834899e00ce2aaa62c9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8238070235392494423
+    second: PunchoutUIAtlas_0
+  - first:
+      213: -2862653066674334540
+    second: PunchoutUIAtlas_1
+  - first:
+      213: -4349015532752084661
+    second: PunchoutUIAtlas_2
+  - first:
+      213: -481020874860856934
+    second: PunchoutUIAtlas_3
+  - first:
+      213: 1877604909930912173
+    second: PunchoutUIAtlas_4
+  - first:
+      213: -559651285780667167
+    second: PunchoutUIAtlas_5
+  - first:
+      213: -5208633392207315146
+    second: PunchoutUIAtlas_6
+  - first:
+      213: 3563500448590569522
+    second: PunchoutUIAtlas_7
+  - first:
+      213: -5052132817230838547
+    second: PunchoutUIAtlas_8
+  - first:
+      213: 643706234546875972
+    second: PunchoutUIAtlas_9
+  - first:
+      213: -2536539189118911549
+    second: PunchoutUIAtlas_10
+  - first:
+      213: 6730774013928529887
+    second: PunchoutUIAtlas_11
+  - first:
+      213: 8665377669690569859
+    second: PunchoutUIAtlas_12
+  - first:
+      213: 5158941708881309922
+    second: PunchoutUIAtlas_13
+  - first:
+      213: -781623137164741071
+    second: PunchoutUIAtlas_14
+  - first:
+      213: 1476317585624532950
+    second: PunchoutUIAtlas_15
+  - first:
+      213: 7243293983846020955
+    second: PunchoutUIAtlas_16
+  - first:
+      213: -2299128497478984668
+    second: PunchoutUIAtlas_17
+  - first:
+      213: -2507245631788483026
+    second: PunchoutUIAtlas_18
+  - first:
+      213: -7635281439902925239
+    second: PunchoutUIAtlas_19
+  - first:
+      213: 154223013444347842
+    second: PunchoutUIAtlas_20
+  - first:
+      213: -2263166798523056378
+    second: PunchoutUIAtlas_21
+  - first:
+      213: -1708637394264079603
+    second: PunchoutUIAtlas_22
+  - first:
+      213: 239118551663848843
+    second: PunchoutUIAtlas_23
+  - first:
+      213: 3813252039437110009
+    second: PunchoutUIAtlas_24
+  - first:
+      213: 2750177064888492074
+    second: PunchoutUIAtlas_25
+  - first:
+      213: 9179807725619055403
+    second: PunchoutUIAtlas_26
+  - first:
+      213: -6018281183913755113
+    second: PunchoutUIAtlas_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a436b0a4ce7cad80800000000000000
+      internalID: -8238070235392494423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 216
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b491bde330d548d0800000000000000
+      internalID: -2862653066674334540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 212
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41e7af3a6135a3c0800000000000000
+      internalID: -4349015532752084661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99fe5810121359f0800000000000000
+      internalID: -481020874860856934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 180
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da916f4b7b79e0a10800000000000000
+      internalID: 1877604909930912173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 178
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4e3f8ee18bb38f0800000000000000
+      internalID: -559651285780667167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 168
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fbe3cb68737b7b0800000000000000
+      internalID: -5208633392207315146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230af2b17c8147130800000000000000
+      internalID: 3563500448590569522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4ccd658f733e9b0800000000000000
+      internalID: -5052132817230838547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44eeed9e867eee800800000000000000
+      internalID: 643706234546875972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_10
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 72
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbb5b1fb076cccd0800000000000000
+      internalID: -2536539189118911549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 108
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfd3a3fd43886d50800000000000000
+      internalID: 6730774013928529887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 144
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3843286541b914870800000000000000
+      internalID: 8665377669690569859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_13
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 72
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e031d6a62e389740800000000000000
+      internalID: 5158941708881309922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_14
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 108
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136b111e5ed1725f0800000000000000
+      internalID: -781623137164741071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_15
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d700d2b50fec7410800000000000000
+      internalID: 1476317585624532950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_16
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 73
+        width: 20
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57bdde6089558460800000000000000
+      internalID: 7243293983846020955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c99c610dad710e0800000000000000
+      internalID: -2299128497478984668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_18
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ef890c169743dd0800000000000000
+      internalID: -2507245631788483026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ef37edbf70a0690800000000000000
+      internalID: -7635281439902925239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c76a8c7309e32200800000000000000
+      internalID: 154223013444347842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_21
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f339a99cd9790e0800000000000000
+      internalID: -2263166798523056378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_22
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d03c0f8b753b948e0800000000000000
+      internalID: -1708637394264079603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_23
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 36
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d212b4e05815300800000000000000
+      internalID: 239118551663848843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 85
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9facea1c6846be430800000000000000
+      internalID: 3813252039437110009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_25
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 0
+        width: 85
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a20ea1e28779a2620800000000000000
+      internalID: 2750177064888492074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_26
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2b09ef5d7a356f70800000000000000
+      internalID: 9179807725619055403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PunchoutUIAtlas_27
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e37624625ca7ca0800000000000000
+      internalID: -6018281183913755113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c70b9af4303e2b34ba05402c7f97de1e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

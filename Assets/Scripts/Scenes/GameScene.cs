@@ -74,13 +74,13 @@ public class GameScene : BaseScene {
     }
 
     void RespawnEnemyPhase(int time) {
+        // Enemy CPU Usage 테스트 용
         //if (time == 5) {
-        //    Manager.EnemyRespawn.Respawn(Manager.PlayerData.playerPosition.position, _enemy, RespawnPattern.Square, 2);
-        //    Manager.EnemyRespawn.RemainEnemy -= 1;
-        //    Debug.Log(Manager.EnemyRespawn.RemainEnemy);
-
+        //    Manager.EnemyRespawn.Respawn(Manager.PlayerData.playerPosition.position, _enemy, RespawnPattern.Square, 0);
         //    return;
         //}
+
+
         if (time > endindTime && Manager.EnemyRespawn.RemainEnemy < 1) {
             Manager.PlayerData.GamePlayState = GameState.Ending;
             Manager.Mouse.DefaultMouseShape();
@@ -117,8 +117,6 @@ public class GameScene : BaseScene {
             Manager.EnemyRespawn.Respawn(Manager.PlayerData.playerPosition.position, _enemy, RespawnPattern.Square, 1);
             return;
         }
-
-
     }
 
 

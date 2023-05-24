@@ -1,0 +1,14 @@
+﻿using System;
+
+// Token: 0x020014F7 RID: 5367
+public enum TrackedMaximums
+{
+	// Token: 0x04007D08 RID: 32008
+	MOST_KEYS_HELD,
+	// Token: 0x04007D09 RID: 32009
+	MOST_BLANKS_HELD,
+	// Token: 0x04007D0A RID: 32010
+	MOST_ENEMIES_KILLED,
+	// Token: 0x04007D0B RID: 32011
+	HIGHEST_CURSE_LEVEL
+}

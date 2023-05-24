@@ -42,9 +42,6 @@ public class Manager : MonoBehaviour {
                 QualitySettings.vSyncCount = 1;
             }
 
-            // TODO
-            // 씬 전환시 문제 테스트 용으로 dontDestroyOnLoad 주석처리 
-            //DontDestroyOnLoad(go);
             s_instance = go.GetComponent<Manager>();
 
             s_instance._pool.Init();

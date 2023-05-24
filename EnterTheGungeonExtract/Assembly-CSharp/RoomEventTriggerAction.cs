@@ -1,0 +1,14 @@
+﻿using System;
+
+// Token: 0x02000F14 RID: 3860
+public enum RoomEventTriggerAction
+{
+	// Token: 0x04004AF6 RID: 19190
+	SEAL_ROOM,
+	// Token: 0x04004AF7 RID: 19191
+	UNSEAL_ROOM,
+	// Token: 0x04004AF8 RID: 19192
+	BECOME_TERRIFYING_AND_DARK,
+	// Token: 0x04004AF9 RID: 19193
+	END_TERRIFYING_AND_DARK
+}

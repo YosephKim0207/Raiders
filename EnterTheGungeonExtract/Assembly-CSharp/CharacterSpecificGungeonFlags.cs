@@ -1,0 +1,14 @@
+﻿using System;
+
+// Token: 0x02001327 RID: 4903
+public enum CharacterSpecificGungeonFlags
+{
+	// Token: 0x04006E80 RID: 28288
+	NONE,
+	// Token: 0x04006E81 RID: 28289
+	KILLED_PAST = 1000,
+	// Token: 0x04006E82 RID: 28290
+	KILLED_PAST_ALTERNATE_COSTUME,
+	// Token: 0x04006E83 RID: 28291
+	CLEARED_BULLET_HELL = 1100
+}

@@ -1,0 +1,65 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net6.0": []
+  },
+  "packageFolders": {
+    "/Users/yosephkim/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/yosephkim/mac_gameDev_C#/Raiders/ExtractCodeAnalysis/ExtractCodeAnalysis/ExtractCodeAnalysis.csproj",
+      "projectName": "ExtractCodeAnalysis",
+      "projectPath": "/Users/yosephkim/mac_gameDev_C#/Raiders/ExtractCodeAnalysis/ExtractCodeAnalysis/ExtractCodeAnalysis.csproj",
+      "packagesPath": "/Users/yosephkim/.nuget/packages/",
+      "outputPath": "/Users/yosephkim/mac_gameDev_C#/Raiders/ExtractCodeAnalysis/ExtractCodeAnalysis/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/yosephkim/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
