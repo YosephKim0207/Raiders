@@ -1,6 +1,6 @@
 # Projectile 
 
-- 다수의 NPC의 사격 및 캐릭터의 Fever 스킬 사용시 성능 저하
+- 캐릭터의 Fever 스킬 사용 및 다수의 NPC가 사격시 성능 저하
 - Rigidbody.MovePosisition등 Unity Documentation 권장사항을 참고한 물리 함수 사용
 - 총알 스크립트 내부 연산을 최소화하여 CPU 사용량 50% 감소 (GC 0.98ms, 스크립트 0.47ms)
 
