@@ -3,7 +3,8 @@
 
 ![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311704-d339b2c3-2948-469e-b3e9-0d7056496190.gif)
 
-- 게임 내 중점적으로 생성 / 소멸할 적과 총알 객체에 대한 오브젝트 풀링 적용
+- NPC와 Projectile 객체가 빈번하게 생성 및 소멸하여 메모리 할당 / 해제, GC, 메모리 파편화 문제 발생
+- 오브젝트 풀링을 통한 CPU 사용률 50% 감소
 
 [PoolManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/PoolManager.cs)
 <details>
