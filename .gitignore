@@ -34,7 +34,7 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
-### TXT ###
+### TXT
 *.txt
 
 ### MicrosoftOffice ###
@@ -51,6 +51,7 @@ Backup of *.doc*
 
 # Excel
 *.xlsx
+*.xls
 
 # Excel Backup File
 *.xlk
