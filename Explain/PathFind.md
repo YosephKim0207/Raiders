@@ -1,6 +1,6 @@
 ### 길찾기 함수 콜 최적화  
 
-[구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=143)
+[구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=145)
 
 
 ![길찾기_용량최적화](https://user-images.githubusercontent.com/46564046/235311817-ffe93472-bddd-450d-aa97-f68bf0f40e0b.gif)
