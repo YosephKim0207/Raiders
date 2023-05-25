@@ -21,12 +21,214 @@
 
 --- 
 
+### 길찾기 함수 콜 최소화  [구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=143)
+
+
+![길찾기_용량최적화](https://user-images.githubusercontent.com/46564046/235311817-ffe93472-bddd-450d-aa97-f68bf0f40e0b.gif)
+
+
+문제
+- 다수의 NPC 등장시 성능 하락
+
+원인
+- 모든 NPC가 플레이어를 추적하기 위해 주기적으로 길찾기 함수를 호출
+
+해결
+- 전투 시스템 및 레벨 디자인 방향성을 고려하여 장애물 발견시에만 길찾기 함수 호출
+- 캐릭터의 이동속도가 느린 점을 이용하여 일정 시간 동안 기존의 경로Stack 재사용
+- 코루틴 사용 
+
+[EnemyController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/EnemyController.cs) /
+[MapManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/MapManager.cs)
+
+<details>
+<summary>길찾기 코루틴 코드만 펼치기</summary>
+
+
+
+```csharp
+ // 플레이어를 타겟으로 길을 찾는 코루틴
+    IEnumerator CoFindPath() {
+        // 플레이어와 일정 거리 이내인 경우 다음 길찾기 중단
+        if ((_shootTargetTransform.position - transform.position).magnitude < 2.5f) {
+            State = CreatureState.Attack;
+        }
+
+        // 진행방향 전방 충돌 점검
+        RaycastHit2D rayHit;
+        rayHit = Physics2D.Raycast(this.transform.position, DestPos, 2.5f, LayerMask.GetMask("Collision"));
+   
+        Debug.DrawRay(this.transform.position, DestPos * 1.5f, Color.red, 1.0f);
+
+        // Enemy가 길찾기에 사용할 조건 설정
+        // rayHit1에 충돌한 오브젝트가 없고 && Manager의 FindPath로 탐색해둔 경로가 없으면 직선이동
+        if (rayHit.transform == null && _pathStack == null) {
+
+            PathState = FindPathState.UseDirect;
+
+        }
+        // Manager의 FindPath로 탐색해둔 경로가 _pathStack상에 없거나 || _pathStack가 비어있으면Manager의 FindPath를 호출하기 위해 PathStated를 ReFindPath로
+        else if (_pathStack == null || _pathStack.Count == 0) {
+            PathState = FindPathState.ReFindPath;
+            }
+        // Manager의 FindPath를 통해 찾은 경로를 정해진 횟수 이상 사용한 경우 경로 재탐색 및 사용횟수 초기화
+        else if (usePathStackCount > pathStackUsageCount) {
+            PathState = FindPathState.ReFindPath;
+            usePathStackCount = 0;
+            }
+        // Manager의 FindPath로 찾아둔 경로를 _pathStack에서 가져와 사용
+         else {
+            PathState = FindPathState.UsePathStack;
+         }
+
+        // 정해진 조건대로 분기하여 이동경로 설정
+        switch (PathState) {
+            case FindPathState.UseDirect:
+                DestPos = (_shootTargetTransform.position - transform.position).normalized;
+                break;
+            case FindPathState.ReFindPath:
+                _pathStack = Manager.Map.FindPath(this.transform, _shootTargetTransform);
+                SetPathUseStack();
+                break;
+            case FindPathState.UsePathStack:
+                SetPathUseStack();
+                ++usePathStackCount;
+                break;
+        }
+
+        yield return WaitFindPathTime;
+
+        _coFindPath = null;
+    }
+
+    // _pathStack에 저장된 경로를 이용하여 경로 설정 
+    void SetPathUseStack() {
+        Vector3 nextPos;
+        nextPos = _pathStack.Pop();
+        if ((_pathStack.Count > 0) && (nextPos - transform.position).magnitude < 0.5) {
+            nextPos = _pathStack.Pop();
+        }
+        DestPos = (nextPos - transform.position).normalized;
+    }
+```
+
+</details>
+
+
+### 투사체 발사 코드 개선
+
+문제
+- 다수의 총알이 발사되는 Fever 스킬 사용시 및 다수의 NPC가 사격시 성능 저하
+
+원인
+- Documentation에서 권장하는 물리함수와 다른 함수 사용
+- 총알을 발사하는 캐릭터 판정 및 충돌 판정에 대한 불필요한 연산들 존재
+
+해결
+- Rigidbody.MovePosisition등 Unity Documentation 권장사항을 참고한 물리 함수 사용
+- 총알 스크립트 내부 연산을 최소화하여 CPU 사용 GC 0.98ms, 스크립트 0.47ms 감소
+
+
+[BulletController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/BulletController.cs)
+<details>
+<summary>BulletController 전체 코드 펼치기</summary>
+
+
+
+```csharp
+public class BulletController : MonoBehaviour {
+    public CreatureController SetCreature { set => _creature = value; }
+    public Vector3 DestPos { get; set; }
+
+    Rigidbody2D _rigidbody;
+    Vector3 _bullPos;
+    Camera _cam;
+    CreatureController _creature;
+    const float _outRange = 0.05f;
+
+    private void Awake() {
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _cam = Camera.main;
+    }
+
+    private void OnEnable() {
+        float speed = 28.0f;
+        _rigidbody.velocity = DestPos * speed;
+    }
+
+
+    protected virtual void Update() {
+        // 카메라 영역+a 벗어나는 경우 총알 제거
+        _bullPos = _cam.WorldToViewportPoint(transform.position);
+        if (_bullPos.x <= -_outRange || _bullPos.x >= 1.0f + _outRange || _bullPos.y <= -_outRange || _bullPos.y >= 1.0f + _outRange) {
+            _creature = null;
+            Manager.Pool.PushPoolChild(this.gameObject);
+        }
+    }
+
+    
+    private void OnTriggerEnter2D(Collider2D collision) {
+        // 총알 간의 충돌이 발생하는 경우 || 아이템과 충돌하는 경우 
+        if (collision.gameObject.layer.Equals(8) || collision.gameObject.layer.Equals(9)) {
+            return;
+        }
+        // Player가 쏜 총알이 Enemy와 충돌하는 경우
+        else if (collision.gameObject.layer.Equals(10)) {
+            if (_creature is PlayerController) {
+                EnemyController enemy = collision.GetComponent<EnemyController>();
+
+                if (enemy != null) {
+                    enemy.HP -= _creature.GunInfo.damage;
+                    _creature = null;
+                    Manager.Pool.PushPoolChild(gameObject);
+
+                    Debug.Log("Player's Bullet Hit Enemy");
+                }
+            }
+        }
+        // Enemy가 쏜 총알이 Player와 충돌하는 경우
+        else if (collision.gameObject.layer.Equals(6)) {
+            if (_creature is EnemyController) {
+                PlayerController player = collision.GetComponent<PlayerController>();
+                // player Fever인 경우 무적
+                if (player.IsFever == false) {
+                    player.HP -= _creature.GunInfo.damage;
+
+                    Debug.Log("Enemy's Bullet Hit Player");
+                }
+
+                _creature = null;
+                Manager.Pool.PushPoolChild(gameObject);
+            }
+        }
+        else {
+            Manager.Pool.PushPoolChild(gameObject);
+        }
+
+        
+    }
+}
+```
+
+</details>
+    
+   
+
+
 ### 오브젝트 풀링  [구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=39)
 
 
-![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311704-d339b2c3-2948-469e-b3e9-0d7056496190.gif)
+![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311704-d339b2c3-2948-469e-b3e9-0d7056496190.gif)
 
-- 게임 내 중점적으로 생성 / 소멸할 적과 총알 객체에 대한 오브젝트 풀링 적용
+    
+문제
+- 다수의 NPC 등장과 다수의 총알 발사시 성능 저하
+
+원인
+- 적 NPC와 총알 객체가 자주 생성과 소멸하면서 메모리 할당 / 해제, GC, 메모리 파편화 문제 발생
+
+해결
+- 오브젝트 풀링을 통한 CPU 사용률 50% 감소
 
 [PoolManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/PoolManager.cs)
 <details>
@@ -277,180 +479,6 @@ public class PoolManager {
         }
     }
 
-}
-```
-
-</details>
-
-
-### 길찾기 함수 콜 최소화  [구현예시영상](https://youtu.be/kSDWP_GfiOQ?t=143)
-
-
-![길찾기_용량최적화](https://user-images.githubusercontent.com/46564046/235311817-ffe93472-bddd-450d-aa97-f68bf0f40e0b.gif)
-
-- 코루틴 사용 
-- 캐릭터 이동 속도, 필드의 장애물 등을 고려하여 swich문을 통해 필요한 경우에만 길찾기 함수 콜 감소
-
-[EnemyController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/EnemyController.cs) /
-[MapManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/MapManager.cs)
-
-<details>
-<summary>길찾기 코루틴 코드만 펼치기</summary>
-
-
-
-```csharp
- // 플레이어를 타겟으로 길을 찾는 코루틴
-    IEnumerator CoFindPath() {
-        // 플레이어와 일정 거리 이내인 경우 다음 길찾기 중단
-        if ((_shootTargetTransform.position - transform.position).magnitude < 2.5f) {
-            State = CreatureState.Attack;
-        }
-
-        // 진행방향 전방 충돌 점검
-        RaycastHit2D rayHit;
-        rayHit = Physics2D.Raycast(this.transform.position, DestPos, 2.5f, LayerMask.GetMask("Collision"));
-   
-        Debug.DrawRay(this.transform.position, DestPos * 1.5f, Color.red, 1.0f);
-
-        // Enemy가 길찾기에 사용할 조건 설정
-        // rayHit1에 충돌한 오브젝트가 없고 && Manager의 FindPath로 탐색해둔 경로가 없으면 직선이동
-        if (rayHit.transform == null && _pathStack == null) {
-
-            PathState = FindPathState.UseDirect;
-
-        }
-        // Manager의 FindPath로 탐색해둔 경로가 _pathStack상에 없거나 || _pathStack가 비어있으면Manager의 FindPath를 호출하기 위해 PathStated를 ReFindPath로
-        else if (_pathStack == null || _pathStack.Count == 0) {
-            PathState = FindPathState.ReFindPath;
-            }
-        // Manager의 FindPath를 통해 찾은 경로를 정해진 횟수 이상 사용한 경우 경로 재탐색 및 사용횟수 초기화
-        else if (usePathStackCount > pathStackUsageCount) {
-            PathState = FindPathState.ReFindPath;
-            usePathStackCount = 0;
-            }
-        // Manager의 FindPath로 찾아둔 경로를 _pathStack에서 가져와 사용
-         else {
-            PathState = FindPathState.UsePathStack;
-         }
-
-        // 정해진 조건대로 분기하여 이동경로 설정
-        switch (PathState) {
-            case FindPathState.UseDirect:
-                DestPos = (_shootTargetTransform.position - transform.position).normalized;
-                break;
-            case FindPathState.ReFindPath:
-                _pathStack = Manager.Map.FindPath(this.transform, _shootTargetTransform);
-                SetPathUseStack();
-                break;
-            case FindPathState.UsePathStack:
-                SetPathUseStack();
-                ++usePathStackCount;
-                break;
-        }
-
-        yield return WaitFindPathTime;
-
-        _coFindPath = null;
-    }
-
-    // _pathStack에 저장된 경로를 이용하여 경로 설정 
-    void SetPathUseStack() {
-        Vector3 nextPos;
-        nextPos = _pathStack.Pop();
-        if ((_pathStack.Count > 0) && (nextPos - transform.position).magnitude < 0.5) {
-            nextPos = _pathStack.Pop();
-        }
-        DestPos = (nextPos - transform.position).normalized;
-    }
-```
-
-</details>
-
-
-### 함수 최적화
-
-- Rigidbody.MovePosisition등 Unity Documentation 권장사항을 참고한 물리 함수 사용
-- 총알 스크립트 내부 연산을 최소화하여 CPU 사용 GC 0.98ms, 스크립트 0.47ms 감소
-
-[BulletController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/BulletController.cs)
-<details>
-<summary>BulletController 전체 코드 펼치기</summary>
-
-
-
-```csharp
-public class BulletController : MonoBehaviour {
-    public CreatureController SetCreature { set => _creature = value; }
-    public Vector3 DestPos { get; set; }
-
-    Rigidbody2D _rigidbody;
-    Vector3 _bullPos;
-    Camera _cam;
-    CreatureController _creature;
-    const float _outRange = 0.05f;
-
-    private void Awake() {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _cam = Camera.main;
-    }
-
-    private void OnEnable() {
-        float speed = 28.0f;
-        _rigidbody.velocity = DestPos * speed;
-    }
-
-
-    protected virtual void Update() {
-        // 카메라 영역+a 벗어나는 경우 총알 제거
-        _bullPos = _cam.WorldToViewportPoint(transform.position);
-        if (_bullPos.x <= -_outRange || _bullPos.x >= 1.0f + _outRange || _bullPos.y <= -_outRange || _bullPos.y >= 1.0f + _outRange) {
-            _creature = null;
-            Manager.Pool.PushPoolChild(this.gameObject);
-        }
-    }
-
-    
-    private void OnTriggerEnter2D(Collider2D collision) {
-        // 총알 간의 충돌이 발생하는 경우 || 아이템과 충돌하는 경우 
-        if (collision.gameObject.layer.Equals(8) || collision.gameObject.layer.Equals(9)) {
-            return;
-        }
-        // Player가 쏜 총알이 Enemy와 충돌하는 경우
-        else if (collision.gameObject.layer.Equals(10)) {
-            if (_creature is PlayerController) {
-                EnemyController enemy = collision.GetComponent<EnemyController>();
-
-                if (enemy != null) {
-                    enemy.HP -= _creature.GunInfo.damage;
-                    _creature = null;
-                    Manager.Pool.PushPoolChild(gameObject);
-
-                    Debug.Log("Player's Bullet Hit Enemy");
-                }
-            }
-        }
-        // Enemy가 쏜 총알이 Player와 충돌하는 경우
-        else if (collision.gameObject.layer.Equals(6)) {
-            if (_creature is EnemyController) {
-                PlayerController player = collision.GetComponent<PlayerController>();
-                // player Fever인 경우 무적
-                if (player.IsFever == false) {
-                    player.HP -= _creature.GunInfo.damage;
-
-                    Debug.Log("Enemy's Bullet Hit Player");
-                }
-
-                _creature = null;
-                Manager.Pool.PushPoolChild(gameObject);
-            }
-        }
-        else {
-            Manager.Pool.PushPoolChild(gameObject);
-        }
-
-        
-    }
 }
 ```
 
