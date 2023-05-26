@@ -16,6 +16,9 @@
 - 캐릭터의 이동속도가 느린 점을 이용하여 일정 시간 동안 기존의 경로Stack 재사용
 - 코루틴 사용 
 
+결과
+- 스크립트 CPU 사용률 80% 감소
+
 [EnemyController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/EnemyController.cs) /
 [MapManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/MapManager.cs)
 
