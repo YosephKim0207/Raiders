@@ -4,11 +4,12 @@
 - 다수의 총알이 발사되는 Fever 스킬 사용시 및 다수의 NPC가 사격시 성능 저하
 
 원인
-- Documentation에서 권장하는 물리함수와 다른 함수 사용
-- 총알을 발사하는 캐릭터 판정 및 충돌 판정에 대한 불필요한 연산들 존재
+- 총알을 발사하는 캐릭터 판정 및 충돌 판정에 대한 불필요한 정보 전달
+- BulletController의 Update함수 내부에 존재하는 불필요한 연산
 
 해결
-- Rigidbody.MovePosisition등 Unity Documentation 권장사항을 참고한 물리 함수 사용
+- 오브젝트 풀에서 총알 호출 시 총알의 Transform과 총알을 생성하는 클래스만 전달
+- Update함수에서는 총알이 카메라를 벗어났는지만 확인
 - 총알 스크립트 내부 연산을 최소화하여 CPU 사용 GC 0.98ms, 스크립트 0.47ms 감소
 
 [BulletController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/BulletController.cs)
