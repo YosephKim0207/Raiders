@@ -11,7 +11,10 @@
 - Bullet 객체뿐만 아니라 NPC의 잦은 생성 및 소멸도 문제
 
 해결
-- 오브젝트 풀링을 통한 CPU 사용률 50% 감소
+- 오브젝트 풀링 구현
+
+결과
+- CPU 사용률 50% 감소
 
 [PoolManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/PoolManager.cs)
 <details>
