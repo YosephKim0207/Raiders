@@ -10,7 +10,9 @@
 해결
 - 오브젝트 풀에서 총알 호출 시 총알의 Transform과 총알을 생성하는 클래스만 전달
 - Update함수에서는 총알이 카메라를 벗어났는지만 확인
-- 총알 스크립트 내부 연산을 최소화하여 CPU 사용 GC 0.98ms, 스크립트 0.47ms 감소
+
+결과
+- 스크립트 CPU 사용률 50% 감소
 
 [BulletController 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Controller/BulletController.cs)
 <details>
