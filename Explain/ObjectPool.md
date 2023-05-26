@@ -3,7 +3,14 @@
 
 ![풀링_용량최적화](https://user-images.githubusercontent.com/46564046/235311704-d339b2c3-2948-469e-b3e9-0d7056496190.gif)
 
-- NPC와 Projectile 객체가 빈번하게 생성 및 소멸하여 메모리 할당 / 해제, GC, 메모리 파편화 문제 발생
+문제
+- 다수의 NPC가 사격시 성능 저하
+
+원인
+- Bullet 객체가 빈번하게 생성 및 소멸하여 메모리 할당 / 해제, GC, 메모리 파편화 문제 발생
+- Bullet 객체뿐만 아니라 NPC의 잦은 생성 및 소멸도 문제
+
+해결
 - 오브젝트 풀링을 통한 CPU 사용률 50% 감소
 
 [PoolManager 전체 코드 바로가기](https://github.com/YosephKim0207/Raiders/blob/main/Assets/Scripts/Manager/PoolManager.cs)
