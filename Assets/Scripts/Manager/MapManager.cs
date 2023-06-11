@@ -116,7 +116,7 @@ public class MapManager {
         PriorityQueue<PQNode> openPQ = new PriorityQueue<PQNode>();
         int[,] _openCheck = new int[yCount, xCount];
         bool[,] _closedCheck = new bool[yCount, xCount];
-        Pos[,] _parent = new Pos[yCount, xCount];
+        Pos[,] _parent = new Pos[yCount, xCount];   // 해당 Pos에 오기 전에 지나는 Pos
 
         // FindPath()로 check되지 않은 경우 true
         for (int y = 0; y < yCount; ++y){
