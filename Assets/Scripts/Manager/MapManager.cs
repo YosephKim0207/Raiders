@@ -118,7 +118,7 @@ public class MapManager {
         bool[,] _closedCheck = new bool[yCount, xCount];
         Pos[,] _parent = new Pos[yCount, xCount];
 
-        // PathFind()로 check되지 않은 경우 true
+        // FindPath()로 check되지 않은 경우 true
         for (int y = 0; y < yCount; ++y){
             for(int x = 0; x < xCount; ++x) {
                 _openCheck[y, x] = Int32.MaxValue;
@@ -135,6 +135,7 @@ public class MapManager {
 
 
         int startF = calH(curArrPos, destArrPos);
+        // 목적지가 한 칸 이내인 경우 정지
         if(startF <= 14) {
             Stack<Vector3> _holdPos = new Stack<Vector3>();
             _holdPos.Push(curPos.position);
@@ -142,40 +143,32 @@ public class MapManager {
         }
 
         PQNode startNode = new PQNode() { F = startF, G = 0, X = curArrPos.X, Y = curArrPos.Y};
-        // 시작 노드를 openList에 추가하기
         //Debug.Log($"Start Node : {startNode.X}, {startNode.Y}");
         openPQ.Push(startNode);
         PQNode curNode = new PQNode();
         _parent[startNode.Y, startNode.X] = curArrPos;
         int count = 0;
-        List<PQNode> stepTracker = new List<PQNode>();
-        List<PQNode> searchTracker = new List<PQNode>();
-        List<Pos> colTracker = new List<Pos>();
-        List<PQNode> closedTracker = new List<PQNode>();
-        List<Pos> openPassTracker = new List<Pos>();
-        // destCellPos에 도착할 때까지 탐색하는 while문 넣기
+
+        // destCellPos에 도착할 때까지 탐색하는 while문
         while (openPQ.Count > 0) {
             curNode = openPQ.Pop();
-            stepTracker.Add(curNode);
             //Debug.Log($"Start ({curNode.X}, {curNode.Y})'s (F : {curNode.F}) NextStep");
             ++count;
             if (curNode.Y == destArrPos.Y && curNode.X == destArrPos.X) {
                 //Debug.Log("CurNode == destArrPos check");
-
                 break;
             }
 
             // 다른 노드에서 탐색 중에 이미 방문한 경우 skip
             if (_closedCheck[curNode.Y, curNode.X] == false) {
-                closedTracker.Add(curNode);
                 continue;
             }
 
-            // startNode를 closed로 넣기
+            // 탐색한 노드를 closed로 넣기
             _closedCheck[curNode.Y, curNode.X] = false;
 
             
-
+            // 8방위 탐색
             for (int i = 0; i < _deltaY.Length; ++i) {
                 // 체크할 위치 설정
                 Pos nextArrPos = new Pos(curNode.Y + _deltaY[i], curNode.X + _deltaX[i]);
@@ -187,10 +180,6 @@ public class MapManager {
                 bool colCheck = Manager.Map.CheckCollision(nextArrPos);
                 if (!colCheck) {
                     //Debug.Log("nextPos's Collsion Check");
-                    if (!colCheck) {
-                        colTracker.Add(nextArrPos);
-                    }
-                    
                     continue;
                 }
 
@@ -198,7 +187,6 @@ public class MapManager {
                 // nextPos가 이미 점검한 pos라면 continue
                 if(_closedCheck[nextArrPos.Y, nextArrPos.X] == false) {
                     //Debug.Log("closed check");
-                    
                     continue;
                 }
 
@@ -210,7 +198,7 @@ public class MapManager {
                 //Debug.Log($"G + H : {_g + _h}");
                 
                 
-                // nextPos가 한 번도 탐색된 적 없다면 int32.maxValue일 것이고, 이미 탐색되었더라도 현 경로가 이 cell 최단경 유 경로
+                // nextPos가 한 번도 탐색된 적 없다면 int32.maxValue일 것이고, 이미 탐색되었더라도 현 경로가 이 cell 최단경유 경로
                 if (_openCheck[nextArrPos.Y, nextArrPos.X] > _g + _h) {
                     //Debug.Log("open Check");
                     _openCheck[nextArrPos.Y, nextArrPos.X] = _g + _h;
@@ -222,11 +210,9 @@ public class MapManager {
                     node.G = _g;
                     node.F = node.G + _h;
 
-                    searchTracker.Add(node);
                     openPQ.Push(node);
                 }
                 else {
-                    openPassTracker.Add(nextArrPos);
                     continue;
                 }
 
@@ -243,9 +229,9 @@ public class MapManager {
         // temp
         int yDistance = Abs(curPos.Y, destPos.Y);
         int xDistance = Abs(curPos.X, destPos.X);
-        int xyGap = Abs(yDistance, xDistance);
+        int yxGap = Abs(yDistance, xDistance);
 
-        return xyGap * _strCost + Mathf.Min(yDistance, xDistance) * _digCost;
+        return yxGap * _strCost + Mathf.Min(yDistance, xDistance) * _digCost;
     }
 
     Pos CheckCollisionDest(Pos destPos) {

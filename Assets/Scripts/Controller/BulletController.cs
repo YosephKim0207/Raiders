@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour {
+    [SerializeField]
+    public float speed = 28.0f;
+
     public CreatureController SetCreature { set => _creature = value; }
     public Vector3 DestPos { get; set; }
 
@@ -18,7 +21,6 @@ public class BulletController : MonoBehaviour {
     }
 
     private void OnEnable() {
-        float speed = 28.0f;
         _rigidbody.velocity = DestPos * speed;
     }
 
