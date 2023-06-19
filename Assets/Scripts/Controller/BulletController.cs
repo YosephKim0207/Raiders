@@ -13,6 +13,7 @@ public class BulletController : MonoBehaviour {
     Vector3 _bullPos;
     Camera _cam;
     CreatureController _creature;
+    CreatureController _collisionCreature;
     const float _outRange = 0.05f;
 
     private void Awake() {
@@ -40,39 +41,23 @@ public class BulletController : MonoBehaviour {
         if (collision.gameObject.layer.Equals(8) || collision.gameObject.layer.Equals(9)) {
             return;
         }
-        // Player가 쏜 총알이 Enemy와 충돌하는 경우
-        else if (collision.gameObject.layer.Equals(10)) {
-            if (_creature is PlayerController) {
-                EnemyController enemy = collision.GetComponent<EnemyController>();
 
-                if (enemy != null) {
-                    enemy.HP -= _creature.GunInfo.damage;
-                    _creature = null;
-                    Manager.Pool.PushPoolChild(gameObject);
-
-                    Debug.Log("Player's Bullet Hit Enemy");
-                }
-            }
+        if (_creature == null) {
+            return;
         }
-        // Enemy가 쏜 총알이 Player와 충돌하는 경우
-        else if (collision.gameObject.layer.Equals(6)) {
-            if (_creature is EnemyController) {
-                PlayerController player = collision.GetComponent<PlayerController>();
-                // player Fever인 경우 무적
-                if (player.IsFever == false) {
-                    player.HP -= _creature.GunInfo.damage;
 
-                    Debug.Log("Enemy's Bullet Hit Player");
-                }
+        if (collision.gameObject.layer != _creature.gameObject.layer) {
+            _collisionCreature = collision.GetComponent<CreatureController>();
 
-                _creature = null;
-                Manager.Pool.PushPoolChild(gameObject);
+            if (_collisionCreature != null) {
+                _collisionCreature.HP -= _creature.GunInfo.damage;
+                Debug.Log($"{_creature.name}'s Bullet Hit {_collisionCreature.name}");
+                _collisionCreature = null;
             }
-        }
-        else {
+
+            _creature = null;
+
             Manager.Pool.PushPoolChild(gameObject);
         }
-
-        
     }
 }

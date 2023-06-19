@@ -60,10 +60,12 @@ public class PlayerController : CreatureController {
                 _coIsFever = StartCoroutine("CoIsFever");
                 _coMakeBulletWaitSeconds = new WaitForSeconds(0.0f);
                 EquipedGun.IsFever = true;
+                _isBulletProof = true;
             }
             else if(!_isFever) {
                 _coMakeBulletWaitSeconds = new WaitForSeconds(GunInfo.shootCoolTime);
                 EquipedGun.IsFever = false;
+                _isBulletProof = false;
             }
         }
     }

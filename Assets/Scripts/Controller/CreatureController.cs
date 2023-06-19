@@ -42,12 +42,11 @@ public class CreatureController : MonoBehaviour {
     protected float _jumpDist = 5.0f;
 
     protected WaitForSeconds _coMakeBulletWaitSeconds;
-
+    protected bool _isBulletProof = false;
 
     bool _isCamShake;
     bool _isJump = false;
     bool _triggerOn = true;
-    bool _isBulletProof = false;
     bool _isMakeJump = false;
     int _hp;
 
