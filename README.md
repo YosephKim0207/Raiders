@@ -65,25 +65,26 @@
         Debug.DrawRay(this.transform.position, DestPos * 1.5f, Color.red, 1.0f);
 
         // Enemy가 길찾기에 사용할 조건 설정
-        // rayHit1에 충돌한 오브젝트가 없고 && Manager의 FindPath로 탐색해둔 경로가 없으면 직선이동
+        // rayHit에 충돌한 오브젝트가 없고 && Manager의 FindPath로 탐색해둔 경로가 없으면 직선이동
         if (rayHit.transform == null && _pathStack == null) {
 
             PathState = FindPathState.UseDirect;
 
         }
-        // Manager의 FindPath로 탐색해둔 경로가 _pathStack상에 없거나 || _pathStack가 비어있으면Manager의 FindPath를 호출하기 위해 PathStated를 ReFindPath로
+        // 전방에 장애물 없고 && Manager의 FindPath를 통해 찾은 경로를 정해진 횟수 이상 사용한 경우 직선이동으로 전환
+        else if (rayHit.transform == null && usePathStackCount > pathStackUsageCount) {
+            PathState = FindPathState.UseDirect;
+            _pathStack = null;
+            usePathStackCount = 0;
+        }
+        // Manager의 FindPath로 탐색해둔 경로 stack이 없거나 || _pathStack가 비어있으면 Manager의 FindPath를 호출하기 위해 PathStated를 ReFindPath로
         else if (_pathStack == null || _pathStack.Count == 0) {
             PathState = FindPathState.ReFindPath;
-            }
-        // Manager의 FindPath를 통해 찾은 경로를 정해진 횟수 이상 사용한 경우 경로 재탐색 및 사용횟수 초기화
-        else if (usePathStackCount > pathStackUsageCount) {
-            PathState = FindPathState.ReFindPath;
-            usePathStackCount = 0;
-            }
+        }
         // Manager의 FindPath로 찾아둔 경로를 _pathStack에서 가져와 사용
-         else {
+        else {
             PathState = FindPathState.UsePathStack;
-         }
+        }
 
         // 정해진 조건대로 분기하여 이동경로 설정
         switch (PathState) {
@@ -96,7 +97,6 @@
                 break;
             case FindPathState.UsePathStack:
                 SetPathUseStack();
-                ++usePathStackCount;
                 break;
         }
 
@@ -108,7 +108,15 @@
     // _pathStack에 저장된 경로를 이용하여 경로 설정 
     void SetPathUseStack() {
         Vector3 nextPos;
+        if (_pathStack == null || _pathStack.Count == 0) {
+            Debug.Log($"Error : {gameObject.name}'s _pathStack is null whlie using SetPathUseStack()");
+            _pathStack = null;
+            DestPos = (_shootTargetTransform.position - transform.position).normalized;
+            return;
+        }
+
         nextPos = _pathStack.Pop();
+        ++usePathStackCount;
         if ((_pathStack.Count > 0) && (nextPos - transform.position).magnitude < 0.5) {
             nextPos = _pathStack.Pop();
         }
