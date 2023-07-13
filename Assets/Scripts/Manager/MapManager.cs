@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 
 public class MapManager {
     GameObject _map;
-    Coroutine _coSleep;
     public bool[,] _collsionData;
 
     public Grid Grid { get; private set; }
@@ -72,7 +71,7 @@ public class MapManager {
     }
 
     // 다중 캐릭터가 장거리에서 동시에 길찾기 실행시 cpu에 과부하 발생 및 프레임 저하
-    // 장거리일 경우 일단 직선 경로로 가도록 하기, 가다가 collsion 만나면 그때부터 A* 실행
+    // 장거리일 경우 일단 직선 경로로 가도록 하기, 가다가 collision 만나면 그때부터 A* 실행
     #region A*
     // 우선순위큐
     // F : 최종점수 (G + H) - H는 현재부터 목적지까지의 추정 비용

@@ -13,7 +13,7 @@ public class PriorityQueue<T> where T : IComparable<T> {
         int compareIdx = _heap.Count - 1;
         while (compareIdx > 0) {
             int parentIdx = (compareIdx - 1) / 2;
-            // 새로 추가된 data가 부모보다 큰 경우 그대로 종료
+            // 부모보다 큰 경우 그대로 종료
             if (_heap[compareIdx].CompareTo(_heap[parentIdx]) > 0) {
                 break;
             }
