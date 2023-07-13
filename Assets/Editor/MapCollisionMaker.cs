@@ -28,7 +28,6 @@ public class MapCollisionMaker {
                 tilemaps.Add(tilemap);
             }
 
-
             tmBase = tilemaps[0];
             //tmObj = tilemaps[1];
             tmCol = tilemaps[2];

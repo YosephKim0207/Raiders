@@ -39,7 +39,7 @@ public class Manager : MonoBehaviour {
                 go.AddComponent<Manager>();
 
                 Application.targetFrameRate = 60;
-                QualitySettings.vSyncCount = 1;
+                //QualitySettings.vSyncCount = 1;
             }
 
             s_instance = go.GetComponent<Manager>();
