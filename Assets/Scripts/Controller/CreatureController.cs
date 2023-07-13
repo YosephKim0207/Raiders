@@ -281,7 +281,7 @@ public class CreatureController : MonoBehaviour {
             }
         }
 
-        // 총기 발사 속
+        // 총기 발사 속도
         yield return _coMakeBulletWaitSeconds;
 
         _coPullTrigger = null;
